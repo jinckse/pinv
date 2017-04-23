@@ -48,7 +48,7 @@ namespace PINV
 
             output = inv.RetrieveRecords();
 
-            outputPane.AppendText("Result set for query: " + SQLQueries.Queries.q2);
+            outputPane.AppendText("Result set for query: " + SQLQueries.Queries.q5);
 
             for (int i = 0; i < output.Count; i++)
             {

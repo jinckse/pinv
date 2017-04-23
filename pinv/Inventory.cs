@@ -42,7 +42,7 @@ namespace PINV
 
             if (dbCon.IsConnected())
             {
-                string query = SQLQueries.Queries.q2;
+                string query = SQLQueries.Queries.q5;
                 List<string> list = new List<string>();
 
                 StringBuilder result = new StringBuilder();

@@ -97,11 +97,11 @@
             // 
             // submitOutput
             // 
-            this.submitOutput.Location = new System.Drawing.Point(364, 64);
+            this.submitOutput.Location = new System.Drawing.Point(539, 54);
             this.submitOutput.Name = "submitOutput";
-            this.submitOutput.Size = new System.Drawing.Size(75, 23);
+            this.submitOutput.Size = new System.Drawing.Size(125, 23);
             this.submitOutput.TabIndex = 1;
-            this.submitOutput.Text = "Submit";
+            this.submitOutput.Text = "Just... DO IT!!!";
             this.submitOutput.UseVisualStyleBackColor = true;
             this.submitOutput.Click += new System.EventHandler(this.submitOutput_Click);
             // 
