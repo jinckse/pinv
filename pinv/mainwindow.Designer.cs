@@ -40,6 +40,11 @@
             this.mainwindowBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.queriesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.mainwindowBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.dbNameLabel = new System.Windows.Forms.Label();
+            this.dbIPLabel = new System.Windows.Forms.Label();
+            this.dbUNameLabel = new System.Windows.Forms.Label();
+            this.dbPassLabel = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.queriesBindingSource)).BeginInit();
@@ -118,7 +123,7 @@
             "Q4: Where can I find a 3 foot USB Type-C cable?",
             "Q5: Where have I stored the elast expensive capacitors I own?",
             "Q6: How many resistors do I have stored in the system?"});
-            this.comboBox1.Location = new System.Drawing.Point(137, 6);
+            this.comboBox1.Location = new System.Drawing.Point(137, 65);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(814, 24);
             this.comboBox1.TabIndex = 2;
@@ -127,7 +132,7 @@
             // 
             // submitOutput
             // 
-            this.submitOutput.Location = new System.Drawing.Point(6, 6);
+            this.submitOutput.Location = new System.Drawing.Point(6, 65);
             this.submitOutput.Name = "submitOutput";
             this.submitOutput.Size = new System.Drawing.Size(125, 23);
             this.submitOutput.TabIndex = 1;
@@ -151,12 +156,72 @@
             // 
             this.mainwindowBindingSource1.DataSource = typeof(PINV.mainwindow);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Impact", 80F);
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(318, 162);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "PINV";
+            // 
+            // dbNameLabel
+            // 
+            this.dbNameLabel.AutoSize = true;
+            this.dbNameLabel.Font = new System.Drawing.Font("Impact", 18F);
+            this.dbNameLabel.ForeColor = System.Drawing.Color.Snow;
+            this.dbNameLabel.Location = new System.Drawing.Point(362, 41);
+            this.dbNameLabel.Name = "dbNameLabel";
+            this.dbNameLabel.Size = new System.Drawing.Size(207, 37);
+            this.dbNameLabel.TabIndex = 4;
+            this.dbNameLabel.Text = "Database Name";
+            this.dbNameLabel.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // dbIPLabel
+            // 
+            this.dbIPLabel.AutoSize = true;
+            this.dbIPLabel.Font = new System.Drawing.Font("Impact", 18F);
+            this.dbIPLabel.ForeColor = System.Drawing.Color.Snow;
+            this.dbIPLabel.Location = new System.Drawing.Point(362, 78);
+            this.dbIPLabel.Name = "dbIPLabel";
+            this.dbIPLabel.Size = new System.Drawing.Size(162, 37);
+            this.dbIPLabel.TabIndex = 5;
+            this.dbIPLabel.Text = "Database IP";
+            // 
+            // dbUNameLabel
+            // 
+            this.dbUNameLabel.AutoSize = true;
+            this.dbUNameLabel.Font = new System.Drawing.Font("Impact", 18F);
+            this.dbUNameLabel.ForeColor = System.Drawing.Color.Snow;
+            this.dbUNameLabel.Location = new System.Drawing.Point(362, 115);
+            this.dbUNameLabel.Name = "dbUNameLabel";
+            this.dbUNameLabel.Size = new System.Drawing.Size(147, 37);
+            this.dbUNameLabel.TabIndex = 6;
+            this.dbUNameLabel.Text = "User Name";
+            // 
+            // dbPassLabel
+            // 
+            this.dbPassLabel.AutoSize = true;
+            this.dbPassLabel.Font = new System.Drawing.Font("Impact", 18F);
+            this.dbPassLabel.ForeColor = System.Drawing.Color.Snow;
+            this.dbPassLabel.Location = new System.Drawing.Point(362, 152);
+            this.dbPassLabel.Name = "dbPassLabel";
+            this.dbPassLabel.Size = new System.Drawing.Size(198, 37);
+            this.dbPassLabel.TabIndex = 7;
+            this.dbPassLabel.Text = "User Password";
+            // 
             // mainwindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(1262, 673);
+            this.Controls.Add(this.dbPassLabel);
+            this.Controls.Add(this.dbUNameLabel);
+            this.Controls.Add(this.dbIPLabel);
+            this.Controls.Add(this.dbNameLabel);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip1);
             this.Name = "mainwindow";
@@ -186,6 +251,11 @@
         private System.Windows.Forms.BindingSource queriesBindingSource1;
         private System.Windows.Forms.BindingSource mainwindowBindingSource1;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label dbNameLabel;
+        private System.Windows.Forms.Label dbIPLabel;
+        private System.Windows.Forms.Label dbUNameLabel;
+        private System.Windows.Forms.Label dbPassLabel;
     }
 }
 
