@@ -17,8 +17,9 @@ namespace PINV.SQLQueries
             "INNER JOIN PURCHASE_INFO ON INum=INo\n" +
             "WHERE CFlag=1 AND NAME='Resistor' AND Power=0.25";
 
+
         /// <summary>
-        /// Do I have any three-foot USB cables, and when did I purchase them?
+        /// 
         /// </summary>
         public static readonly string q2 = "SELECT INo, Name, IType, Amount, Length, Protocol, PDate\n" +
             "FROM ITEM\n" +
@@ -79,5 +80,11 @@ namespace PINV.SQLQueries
             "FROM ITEM\n" +
             "JOIN STORED_IN ON INum = INo\n" +
             "WHERE Name = 'Resistor'";
+
+        /// <summary>
+        /// List of all example queries
+        /// </summary>
+        public static readonly List<string> queryList = new List<string>
+            { q1, q2, q3, q4, q5, q6 };
     }
 }

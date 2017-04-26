@@ -35,44 +35,51 @@ namespace PINV
         /// Retrieve records from PINV system
         /// </summary>
         /// <returns></returns>
-        public List<string> RetrieveRecords()
+        public List<string> RetrieveRecords(string query)
         {
             var dbCon = DBTalker.Instance();
             dbCon.DatabaseName = "PINV";
 
             if (dbCon.IsConnected())
             {
-                string query = SQLQueries.Queries.q5;
                 List<string> list = new List<string>();
 
                 StringBuilder result = new StringBuilder();
 
                 var cmd = new MySqlCommand(query, dbCon.Connection);
-                var reader = cmd.ExecuteReader();
 
-                list.Add("\n");
-                for (int i = 0; i < reader.FieldCount; i++)
+                try
                 {
-                    list.Add(reader.GetName(i));
-                }
-                list.Add("\n");
+                    var reader = cmd.ExecuteReader();
 
-                for (int i = 0; i < reader.FieldCount; i++)
-                {
-                    list.Add("-------");
-                }
-                list.Add("\n");
-                
-                while (reader.Read())
-                {
+                    list.Add("\n");
                     for (int i = 0; i < reader.FieldCount; i++)
                     {
-                        list.Add(reader[i] + "");
+                        list.Add(reader.GetName(i));
                     }
                     list.Add("\n");
-                }
 
-                reader.Close();
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        list.Add("-------");
+                    }
+                    list.Add("\n");
+                    
+                    while (reader.Read())
+                    {
+                        for (int i = 0; i < reader.FieldCount; i++)
+                        {
+                            list.Add(reader[i] + "");
+                        }
+                        list.Add("\n");
+                    }
+
+                    reader.Close();
+                }
+                catch (InvalidOperationException ex)
+                {
+                    Console.WriteLine("Invalid Operation: " + ex);
+                }
 
                 return list;
             }
@@ -83,6 +90,25 @@ namespace PINV
 
 
         }
+
+        /// <summary>
+        /// Returns a list of sample queries for use in combobox
+        /// </summary>
+        /// <returns></returns>
+        public static List<string> GetExampleQueries()
+        {
+            List<string> exampleQueryList = new List<string>();
+
+            exampleQueryList.Add(SQLQueries.Queries.q1);
+            exampleQueryList.Add(SQLQueries.Queries.q2);
+            exampleQueryList.Add(SQLQueries.Queries.q3);
+            exampleQueryList.Add(SQLQueries.Queries.q4);
+            exampleQueryList.Add(SQLQueries.Queries.q5);
+            exampleQueryList.Add(SQLQueries.Queries.q6);
+
+            return exampleQueryList;
+        }
+
         #endregion methods
 
     }

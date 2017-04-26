@@ -63,7 +63,7 @@ namespace PINV
                     result = false;
                 }
 
-                string connString = string.Format("Server=bessy; database={0};" +
+                string connString = string.Format("Server=104.185.154.255; database={0};" +
                     "UID=guest; password=cse3330", databaseName);
 
                 connection = new MySqlConnection(connString);
