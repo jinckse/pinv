@@ -57,12 +57,16 @@
             this.addItemButton = new System.Windows.Forms.Button();
             this.updateItemButton = new System.Windows.Forms.Button();
             this.deleteItemButton = new System.Windows.Forms.Button();
+            this.debugCheckbox = new System.Windows.Forms.CheckBox();
+            this.locateItemPanel = new System.Windows.Forms.Panel();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.queriesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainwindowBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.queriesBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainwindowBindingSource1)).BeginInit();
+            this.locateItemPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -95,6 +99,8 @@
             this.panel1.AutoScroll = true;
             this.panel1.AutoSize = true;
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel1.Controls.Add(this.locateItemPanel);
+            this.panel1.Controls.Add(this.debugCheckbox);
             this.panel1.Controls.Add(this.deleteItemButton);
             this.panel1.Controls.Add(this.updateItemButton);
             this.panel1.Controls.Add(this.addItemButton);
@@ -361,6 +367,34 @@
             this.deleteItemButton.Text = "Delete Item";
             this.deleteItemButton.UseVisualStyleBackColor = false;
             // 
+            // debugCheckbox
+            // 
+            this.debugCheckbox.AutoSize = true;
+            this.debugCheckbox.Location = new System.Drawing.Point(32, 459);
+            this.debugCheckbox.Name = "debugCheckbox";
+            this.debugCheckbox.Size = new System.Drawing.Size(72, 21);
+            this.debugCheckbox.TabIndex = 14;
+            this.debugCheckbox.Text = "Debug";
+            this.debugCheckbox.UseVisualStyleBackColor = true;
+            // 
+            // locateItemPanel
+            // 
+            this.locateItemPanel.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.locateItemPanel.Controls.Add(this.listBox1);
+            this.locateItemPanel.Location = new System.Drawing.Point(521, 151);
+            this.locateItemPanel.Name = "locateItemPanel";
+            this.locateItemPanel.Size = new System.Drawing.Size(699, 302);
+            this.locateItemPanel.TabIndex = 15;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Location = new System.Drawing.Point(30, 34);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(104, 84);
+            this.listBox1.TabIndex = 0;
+            // 
             // mainwindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -392,6 +426,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.mainwindowBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.queriesBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainwindowBindingSource1)).EndInit();
+            this.locateItemPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -426,6 +461,9 @@
         private System.Windows.Forms.Button addItemButton;
         private System.Windows.Forms.Button viewItemButton;
         private System.Windows.Forms.Button locateItemButton;
+        private System.Windows.Forms.Panel locateItemPanel;
+        private System.Windows.Forms.CheckBox debugCheckbox;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 
