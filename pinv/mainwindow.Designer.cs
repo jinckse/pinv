@@ -45,6 +45,10 @@
             this.dbIPLabel = new System.Windows.Forms.Label();
             this.dbUNameLabel = new System.Windows.Forms.Label();
             this.dbPassLabel = new System.Windows.Forms.Label();
+            this.dbNameTextBox = new System.Windows.Forms.TextBox();
+            this.dbIPTextBox = new System.Windows.Forms.TextBox();
+            this.dbUNameTextBox = new System.Windows.Forms.TextBox();
+            this.dbPassTextBox = new System.Windows.Forms.MaskedTextBox();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.queriesBindingSource)).BeginInit();
@@ -169,11 +173,11 @@
             // dbNameLabel
             // 
             this.dbNameLabel.AutoSize = true;
-            this.dbNameLabel.Font = new System.Drawing.Font("Impact", 18F);
+            this.dbNameLabel.Font = new System.Drawing.Font("Impact", 16F);
             this.dbNameLabel.ForeColor = System.Drawing.Color.Snow;
-            this.dbNameLabel.Location = new System.Drawing.Point(362, 41);
+            this.dbNameLabel.Location = new System.Drawing.Point(362, 40);
             this.dbNameLabel.Name = "dbNameLabel";
-            this.dbNameLabel.Size = new System.Drawing.Size(207, 37);
+            this.dbNameLabel.Size = new System.Drawing.Size(190, 34);
             this.dbNameLabel.TabIndex = 4;
             this.dbNameLabel.Text = "Database Name";
             this.dbNameLabel.Click += new System.EventHandler(this.label2_Click);
@@ -181,35 +185,72 @@
             // dbIPLabel
             // 
             this.dbIPLabel.AutoSize = true;
-            this.dbIPLabel.Font = new System.Drawing.Font("Impact", 18F);
+            this.dbIPLabel.Font = new System.Drawing.Font("Impact", 16F);
             this.dbIPLabel.ForeColor = System.Drawing.Color.Snow;
-            this.dbIPLabel.Location = new System.Drawing.Point(362, 78);
+            this.dbIPLabel.Location = new System.Drawing.Point(362, 77);
             this.dbIPLabel.Name = "dbIPLabel";
-            this.dbIPLabel.Size = new System.Drawing.Size(162, 37);
+            this.dbIPLabel.Size = new System.Drawing.Size(148, 34);
             this.dbIPLabel.TabIndex = 5;
             this.dbIPLabel.Text = "Database IP";
+            this.dbIPLabel.Click += new System.EventHandler(this.dbIPLabel_Click);
             // 
             // dbUNameLabel
             // 
             this.dbUNameLabel.AutoSize = true;
-            this.dbUNameLabel.Font = new System.Drawing.Font("Impact", 18F);
+            this.dbUNameLabel.Font = new System.Drawing.Font("Impact", 16F);
             this.dbUNameLabel.ForeColor = System.Drawing.Color.Snow;
-            this.dbUNameLabel.Location = new System.Drawing.Point(362, 115);
+            this.dbUNameLabel.Location = new System.Drawing.Point(362, 114);
             this.dbUNameLabel.Name = "dbUNameLabel";
-            this.dbUNameLabel.Size = new System.Drawing.Size(147, 37);
+            this.dbUNameLabel.Size = new System.Drawing.Size(136, 34);
             this.dbUNameLabel.TabIndex = 6;
             this.dbUNameLabel.Text = "User Name";
+            this.dbUNameLabel.Click += new System.EventHandler(this.dbUNameLabel_Click);
             // 
             // dbPassLabel
             // 
             this.dbPassLabel.AutoSize = true;
-            this.dbPassLabel.Font = new System.Drawing.Font("Impact", 18F);
+            this.dbPassLabel.Font = new System.Drawing.Font("Impact", 16F);
             this.dbPassLabel.ForeColor = System.Drawing.Color.Snow;
-            this.dbPassLabel.Location = new System.Drawing.Point(362, 152);
+            this.dbPassLabel.Location = new System.Drawing.Point(362, 151);
             this.dbPassLabel.Name = "dbPassLabel";
-            this.dbPassLabel.Size = new System.Drawing.Size(198, 37);
+            this.dbPassLabel.Size = new System.Drawing.Size(181, 34);
             this.dbPassLabel.TabIndex = 7;
             this.dbPassLabel.Text = "User Password";
+            this.dbPassLabel.Click += new System.EventHandler(this.dbPassLabel_Click);
+            // 
+            // dbNameTextBox
+            // 
+            this.dbNameTextBox.Location = new System.Drawing.Point(587, 47);
+            this.dbNameTextBox.Name = "dbNameTextBox";
+            this.dbNameTextBox.Size = new System.Drawing.Size(263, 22);
+            this.dbNameTextBox.TabIndex = 8;
+            this.dbNameTextBox.TextChanged += new System.EventHandler(this.dbNameTextBox_TextChanged);
+            // 
+            // dbIPTextBox
+            // 
+            this.dbIPTextBox.Location = new System.Drawing.Point(587, 84);
+            this.dbIPTextBox.Name = "dbIPTextBox";
+            this.dbIPTextBox.Size = new System.Drawing.Size(263, 22);
+            this.dbIPTextBox.TabIndex = 9;
+            this.dbIPTextBox.TextChanged += new System.EventHandler(this.dbIPTextBox_TextChanged);
+            // 
+            // dbUNameTextBox
+            // 
+            this.dbUNameTextBox.Location = new System.Drawing.Point(587, 121);
+            this.dbUNameTextBox.Name = "dbUNameTextBox";
+            this.dbUNameTextBox.Size = new System.Drawing.Size(263, 22);
+            this.dbUNameTextBox.TabIndex = 10;
+            this.dbUNameTextBox.TextChanged += new System.EventHandler(this.dbUNameTextBox_TextChanged);
+            // 
+            // dbPassTextBox
+            // 
+            this.dbPassTextBox.Location = new System.Drawing.Point(587, 158);
+            this.dbPassTextBox.Name = "dbPassTextBox";
+            this.dbPassTextBox.Size = new System.Drawing.Size(263, 22);
+            this.dbPassTextBox.TabIndex = 3;
+            this.dbPassTextBox.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
+            this.dbPassTextBox.UseSystemPasswordChar = true;
+            this.dbPassTextBox.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.dbPassTextBox_MaskInputRejected);
             // 
             // mainwindow
             // 
@@ -217,6 +258,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(1262, 673);
+            this.Controls.Add(this.dbPassTextBox);
+            this.Controls.Add(this.dbUNameTextBox);
+            this.Controls.Add(this.dbIPTextBox);
+            this.Controls.Add(this.dbNameTextBox);
             this.Controls.Add(this.dbPassLabel);
             this.Controls.Add(this.dbUNameLabel);
             this.Controls.Add(this.dbIPLabel);
@@ -256,6 +301,10 @@
         private System.Windows.Forms.Label dbIPLabel;
         private System.Windows.Forms.Label dbUNameLabel;
         private System.Windows.Forms.Label dbPassLabel;
+        private System.Windows.Forms.MaskedTextBox dbPassTextBox;
+        private System.Windows.Forms.TextBox dbNameTextBox;
+        private System.Windows.Forms.TextBox dbIPTextBox;
+        private System.Windows.Forms.TextBox dbUNameTextBox;
     }
 }
 

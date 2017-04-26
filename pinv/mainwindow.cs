@@ -104,5 +104,40 @@ namespace PINV
         {
 
         }
+
+        private void dbPassLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dbUNameLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dbIPLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dbNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dbIPTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dbUNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dbPassTextBox_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
     }
 }
