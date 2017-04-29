@@ -22,21 +22,6 @@ namespace PINV
 
         }
 
-        private string databaseName = string.Empty;
-        public string DatabaseName
-        {
-            get { return databaseName; }
-            set { databaseName = value; }
-        }
-
-        public string Password { get; set; }
-
-        private MySqlConnection connection = null;
-        public MySqlConnection Connection
-        {
-            get { return connection; }
-        }
-
         private static DBTalker _instance = null;
         public static DBTalker Instance()
         {
@@ -47,28 +32,85 @@ namespace PINV
 
             return _instance;
         }
+
+        #region Database Connection Fields
+
+        private string databaseName = string.Empty;
+        public string DatabaseName
+        {
+            get { return databaseName; }
+            set { databaseName = value; }
+        }
         
+        private string databaseIP = string.Empty;
+        public string DatabaseIP
+        {
+            get { return databaseIP; }
+            set { databaseIP = value; }
+        }
+        
+        private string databaseUID = string.Empty;
+        public string DatabaseUID
+        {
+            get { return databaseUID; }
+            set { databaseUID = value; }
+        }
+        
+        private string databasePass = string.Empty;
+        public string DatabasePass
+        {
+            get { return databasePass; }
+            set { databasePass = value; }
+        }
+
+        private MySqlConnection connection = null;
+        public MySqlConnection Connection
+        {
+            get { return connection; }
+        }
+
+        #endregion Databse Connection Fields
+
         /// <summary>
-        /// Check for a connection. If not create a new one
+        /// Check for a connection and return the status
         /// </summary>
-        /// <returns>result</returns>
+        /// <returns>status</returns>
         public bool IsConnected()
         {
             bool result = true;
 
             if (Connection == null)
             {
-                if (String.IsNullOrEmpty(databaseName))
+                result = false;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Connect to a remote database
+        /// </summary>
+        /// <returns>result</returns>
+        public bool OpenConnection()
+        {
+            bool result = true;
+
+            if (Connection == null)
+            {
+                try
                 {
+                    string connString = string.Format("Server={0}; database={1};" +
+                        "UID={2}; password={3}", databaseIP, databaseName, databaseUID, databasePass);
+
+                    connection = new MySqlConnection(connString);
+                    connection.Open();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Problem Connecting to database " + databaseName + ": " + ex);
+                    connection = null;
                     result = false;
                 }
-
-                string connString = string.Format("Server=104.185.154.255; database={0};" +
-                    "UID=guest; password=cse3330", databaseName);
-
-                connection = new MySqlConnection(connString);
-                connection.Open();
-                result = true;
             }
 
             return result;

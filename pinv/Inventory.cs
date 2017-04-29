@@ -35,18 +35,15 @@ namespace PINV
         /// Retrieve records from PINV system
         /// </summary>
         /// <returns></returns>
-        public List<string> RetrieveRecords(string query)
+        public List<string> RetrieveRecords(DBTalker conn, string query)
         {
-            var dbCon = DBTalker.Instance();
-            dbCon.DatabaseName = "PINV";
-
-            if (dbCon.IsConnected())
+            if (conn.IsConnected())
             {
                 List<string> list = new List<string>();
 
                 StringBuilder result = new StringBuilder();
 
-                var cmd = new MySqlCommand(query, dbCon.Connection);
+                var cmd = new MySqlCommand(query, conn.Connection);
 
                 try
                 {

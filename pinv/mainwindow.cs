@@ -12,6 +12,8 @@ namespace PINV
 {
     public partial class mainwindow : Form
     {
+        DBTalker dbCon = DBTalker.Instance();
+
         public mainwindow()
         {
             InitializeComponent();
@@ -52,7 +54,7 @@ namespace PINV
             var inv = Inventory.Instance();
             List<string> output = new List<string>();
 
-            output = inv.RetrieveRecords(queryOption);
+            output = inv.RetrieveRecords(dbCon, queryOption);
 
             outputPane.AppendText("Result set for query: " + queryOption);
 
@@ -140,27 +142,45 @@ namespace PINV
 
         }
 
-        private void label6_Click(object sender, EventArgs e)
+        private void toolStripStatusLabel2_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void connectButton_Click(object sender, EventArgs e)
         {
-
+            // Populate connection information using text fields
+            dbCon.DatabaseName = dbNameTextBox.Text;
+            dbCon.DatabaseIP = dbIPTextBox.Text;
+            dbCon.DatabaseUID = dbUNameTextBox.Text;
+            dbCon.DatabasePass = dbPassTextBox.Text;
+            
+            // Check if we are already connected
+            if (dbCon.IsConnected())
+            {
+                // Notify user
+                outputPane.AppendText("\nAlready connected to database: " + dbCon.DatabaseName);
+                outputPane.AppendText("\nPlease disconnect the current session");
+            }
+            else
+            {
+                // Otherwise connect to desired database
+                outputPane.AppendText("\nAttempting to connect to database: " + dbCon.DatabaseName);
+                if (dbCon.OpenConnection())
+                {
+                    outputPane.AppendText("\nConnection successful!");
+                    connectionToolStripStatusLabel.Text = "MySQL Connection Status: Connected";
+                    connectionToolStripStatusLabel.ForeColor = Color.Green;
+                }
+                else
+                {
+                    outputPane.AppendText("\nCouldn't connect to database: " + dbCon.DatabaseName);
+                    outputPane.AppendText("\nCheck your connection parameters");
+                }
+            }
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
+        private void disconnectButton_Click(object sender, EventArgs e)
         {
 
         }
