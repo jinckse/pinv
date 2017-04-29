@@ -8,6 +8,8 @@ namespace PINV.SQLQueries
 {
     public static class Queries
     {
+        #region fields 
+
         /// <summary>
         /// How many 1 Ohm, 0.25 watt resistors do I have, and what's their total
         /// cost?
@@ -84,7 +86,8 @@ namespace PINV.SQLQueries
         /// <summary>
         /// List of all example queries
         /// </summary>
-        public static readonly List<string> queryList = new List<string>
-            { q1, q2, q3, q4, q5, q6 };
+        public static readonly List<string> queryList = new List<string>{ q1, q2, q3, q4, q5, q6 };
+
+        #endregion fields
     }
 }

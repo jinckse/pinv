@@ -232,6 +232,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.outputPane.BackColor = System.Drawing.SystemColors.WindowText;
             this.outputPane.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.outputPane.Cursor = System.Windows.Forms.Cursors.Default;
             this.outputPane.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.outputPane.ForeColor = System.Drawing.Color.Lime;
             this.outputPane.Location = new System.Drawing.Point(24, 86);
@@ -241,7 +242,6 @@
             this.outputPane.Size = new System.Drawing.Size(361, 283);
             this.outputPane.TabIndex = 0;
             this.outputPane.Text = "Welcome to the PINV system";
-            this.outputPane.UseWaitCursor = true;
             this.outputPane.WordWrap = false;
             this.outputPane.ZoomFactor = 1.2F;
             this.outputPane.TextChanged += new System.EventHandler(this.outputPane_TextChanged);
