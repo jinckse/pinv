@@ -192,5 +192,77 @@ namespace PINV
         {
 
         }
+
+        private void generateReportButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void componentRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            /// Hide the others
+            toolAttrGroupBox.Hide();
+            lComponentAttrGroupBox.Hide();
+
+            statusComboBox.Hide();
+            cDateComboBox.Hide();
+
+            lengthComboBox.Hide();
+            protocolComboBox.Hide();
+            gaugeComboBox.Hide();
+
+            /// When this option is selected show the "Component Attributes" control group
+            resistanceComboBox.Show();
+            capacitanceComboBox.Show();
+            voltageComboBox.Show();
+            amperageComboBox.Show();
+
+            componentAttrGroupBox.Show();
+        }
+
+        private void toolRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            /// Hide the others
+            componentAttrGroupBox.Hide();
+
+            /// When this option is selected show the "Component Attributes" control group
+            componentAttrGroupBox.Show();
+            lComponentAttrGroupBox.Show();
+
+            lengthComboBox.Hide();
+            protocolComboBox.Hide();
+            gaugeComboBox.Hide();
+
+            resistanceComboBox.Hide();
+            capacitanceComboBox.Hide();
+            voltageComboBox.Hide();
+            amperageComboBox.Hide();
+
+            cDateComboBox.Show();
+            statusComboBox.Show();
+
+            toolAttrGroupBox.Show();
+        }
+
+        private void lComponentRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            /// Hide the others
+            toolAttrGroupBox.Hide();
+
+            statusComboBox.Hide();
+            cDateComboBox.Hide();
+
+            resistanceComboBox.Hide();
+            capacitanceComboBox.Hide();
+            voltageComboBox.Hide();
+            amperageComboBox.Hide();
+
+            /// When this option is selected show the "Component Attributes" control group
+            lengthComboBox.Show();
+            protocolComboBox.Show();
+            gaugeComboBox.Show();
+
+            lComponentAttrGroupBox.Show();
+        }
     }
 }
