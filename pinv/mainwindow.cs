@@ -58,14 +58,22 @@ namespace PINV
 
             outputPane.AppendText("Result set for query: " + queryOption);
 
-            for (int i = 0; i < output.Count; i++)
+            try
             {
-                output[i] = String.Format("{0,-25}", output[i]);
+                for (int i = 0; i < output.Count; i++)
+                {
+                    output[i] = String.Format("{0,-25}", output[i]);
+                }
+
+                outputPane.AppendText("\nDatabase returned:\n");
+
+                output.ForEach(outputPane.AppendText);
             }
-
-            outputPane.AppendText("\nDatabase returned:\n");
-
-            output.ForEach(outputPane.AppendText);
+            catch (NullReferenceException ex)
+            {
+                outputPane.AppendText("\nERROR: A problem occurred while reading from database");
+                outputPane.AppendText("\nAre you connected?");
+            }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
