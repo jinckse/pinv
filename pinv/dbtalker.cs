@@ -35,38 +35,38 @@ namespace PINV
 
         #region Database Connection Fields
 
-        private string databaseName = string.Empty;
+        private string _databaseName = string.Empty;
         public string DatabaseName
         {
-            get { return databaseName; }
-            set { databaseName = value; }
+            get { return _databaseName; }
+            set { _databaseName = value; }
         }
         
-        private string databaseIP = string.Empty;
+        private string _databaseIP = string.Empty;
         public string DatabaseIP
         {
-            get { return databaseIP; }
-            set { databaseIP = value; }
+            get { return _databaseIP; }
+            set { _databaseIP = value; }
         }
         
-        private string databaseUID = string.Empty;
+        private string _databaseUID = string.Empty;
         public string DatabaseUID
         {
-            get { return databaseUID; }
-            set { databaseUID = value; }
+            get { return _databaseUID; }
+            set { _databaseUID = value; }
         }
         
-        private string databasePass = string.Empty;
+        private string _databasePass = string.Empty;
         public string DatabasePass
         {
-            get { return databasePass; }
-            set { databasePass = value; }
+            get { return _databasePass; }
+            set { _databasePass = value; }
         }
 
-        private MySqlConnection connection = null;
+        private MySqlConnection _connection = null;
         public MySqlConnection Connection
         {
-            get { return connection; }
+            get { return _connection; }
         }
 
         #endregion Databse Connection Fields
@@ -100,15 +100,15 @@ namespace PINV
                 try
                 {
                     string connString = string.Format("Server={0}; database={1};" +
-                        "UID={2}; password={3}", databaseIP, databaseName, databaseUID, databasePass);
+                        "UID={2}; password={3}", _databaseIP, _databaseName, _databaseUID, _databasePass);
 
-                    connection = new MySqlConnection(connString);
-                    connection.Open();
+                    _connection = new MySqlConnection(connString);
+                    _connection.Open();
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Problem Connecting to database " + databaseName + ": " + ex);
-                    connection = null;
+                    Console.WriteLine("Problem Connecting to database " + _databaseName + ": " + ex);
+                    _connection = null;
                     result = false;
                 }
             }
@@ -121,7 +121,7 @@ namespace PINV
         /// </summary>
         public void Close()
         {
-            connection.Close();
+            _connection.Close();
         } 
     }
 }

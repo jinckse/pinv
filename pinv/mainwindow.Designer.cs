@@ -44,7 +44,7 @@
             this.toolRadioButton = new System.Windows.Forms.RadioButton();
             this.componentRadioButton = new System.Windows.Forms.RadioButton();
             this.typeComboBox_LI = new System.Windows.Forms.ComboBox();
-            this.nameCombobox_LI = new System.Windows.Forms.ComboBox();
+            this.nameComboBox_LI = new System.Windows.Forms.ComboBox();
             this.componentAttrGroupBox = new System.Windows.Forms.GroupBox();
             this.amperageComboBox = new System.Windows.Forms.ComboBox();
             this.voltageComboBox = new System.Windows.Forms.ComboBox();
@@ -82,6 +82,7 @@
             this.dbPassTextBox = new System.Windows.Forms.MaskedTextBox();
             this.connectButton = new System.Windows.Forms.Button();
             this.disconnectButton = new System.Windows.Forms.Button();
+            this.includePaymentInfoCheckBox = new System.Windows.Forms.CheckBox();
             this.statusStrip1.SuspendLayout();
             this.statusLog.SuspendLayout();
             this.locateItemGroupBox.SuspendLayout();
@@ -140,6 +141,7 @@
             // 
             // locateItemGroupBox
             // 
+            this.locateItemGroupBox.Controls.Add(this.includePaymentInfoCheckBox);
             this.locateItemGroupBox.Controls.Add(this.generateReportButton);
             this.locateItemGroupBox.Controls.Add(this.sortGroupBox);
             this.locateItemGroupBox.Controls.Add(this.purchaseDateComboBox_LI);
@@ -149,7 +151,7 @@
             this.locateItemGroupBox.Controls.Add(this.toolRadioButton);
             this.locateItemGroupBox.Controls.Add(this.componentRadioButton);
             this.locateItemGroupBox.Controls.Add(this.typeComboBox_LI);
-            this.locateItemGroupBox.Controls.Add(this.nameCombobox_LI);
+            this.locateItemGroupBox.Controls.Add(this.nameComboBox_LI);
             this.locateItemGroupBox.Controls.Add(this.componentAttrGroupBox);
             this.locateItemGroupBox.ForeColor = System.Drawing.SystemColors.Control;
             this.locateItemGroupBox.Location = new System.Drawing.Point(393, 119);
@@ -157,7 +159,7 @@
             this.locateItemGroupBox.Size = new System.Drawing.Size(524, 250);
             this.locateItemGroupBox.TabIndex = 15;
             this.locateItemGroupBox.TabStop = false;
-            this.locateItemGroupBox.Text = "Locate an Item in the System";
+            this.locateItemGroupBox.Text = "View an Item in the System";
             // 
             // generateReportButton
             // 
@@ -165,7 +167,7 @@
             this.generateReportButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.generateReportButton.Font = new System.Drawing.Font("Impact", 15F);
             this.generateReportButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.generateReportButton.Location = new System.Drawing.Point(175, 190);
+            this.generateReportButton.Location = new System.Drawing.Point(6, 183);
             this.generateReportButton.Name = "generateReportButton";
             this.generateReportButton.Size = new System.Drawing.Size(157, 39);
             this.generateReportButton.TabIndex = 9;
@@ -319,11 +321,11 @@
             this.typeComboBox_LI.TabIndex = 1;
             this.typeComboBox_LI.Text = "Select Item Type";
             // 
-            // nameCombobox_LI
+            // nameComboBox_LI
             // 
-            this.nameCombobox_LI.CausesValidation = false;
-            this.nameCombobox_LI.FormattingEnabled = true;
-            this.nameCombobox_LI.Items.AddRange(new object[] {
+            this.nameComboBox_LI.CausesValidation = false;
+            this.nameComboBox_LI.FormattingEnabled = true;
+            this.nameComboBox_LI.Items.AddRange(new object[] {
             "Cable",
             "Capacitor",
             "Hammer",
@@ -333,12 +335,12 @@
             "TFT Display",
             "Transistor",
             "Wire"});
-            this.nameCombobox_LI.Location = new System.Drawing.Point(6, 50);
-            this.nameCombobox_LI.Name = "nameCombobox_LI";
-            this.nameCombobox_LI.Size = new System.Drawing.Size(121, 21);
-            this.nameCombobox_LI.Sorted = true;
-            this.nameCombobox_LI.TabIndex = 0;
-            this.nameCombobox_LI.Text = "Select Item Name";
+            this.nameComboBox_LI.Location = new System.Drawing.Point(6, 50);
+            this.nameComboBox_LI.Name = "nameComboBox_LI";
+            this.nameComboBox_LI.Size = new System.Drawing.Size(121, 21);
+            this.nameComboBox_LI.Sorted = true;
+            this.nameComboBox_LI.TabIndex = 0;
+            this.nameComboBox_LI.Text = "Select Item Name";
             // 
             // componentAttrGroupBox
             // 
@@ -367,7 +369,7 @@
             this.amperageComboBox.Name = "amperageComboBox";
             this.amperageComboBox.Size = new System.Drawing.Size(121, 21);
             this.amperageComboBox.TabIndex = 3;
-            this.amperageComboBox.Text = "Amperage (A)";
+            this.amperageComboBox.Text = "Select Amperage (A)";
             // 
             // voltageComboBox
             // 
@@ -382,7 +384,7 @@
             this.voltageComboBox.Name = "voltageComboBox";
             this.voltageComboBox.Size = new System.Drawing.Size(121, 21);
             this.voltageComboBox.TabIndex = 2;
-            this.voltageComboBox.Text = "Voltage (V)";
+            this.voltageComboBox.Text = "Select Voltage (V)";
             // 
             // capacitanceComboBox
             // 
@@ -397,7 +399,7 @@
             this.capacitanceComboBox.Name = "capacitanceComboBox";
             this.capacitanceComboBox.Size = new System.Drawing.Size(121, 21);
             this.capacitanceComboBox.TabIndex = 1;
-            this.capacitanceComboBox.Text = "Capacitance (F)";
+            this.capacitanceComboBox.Text = "Select Capacitance (F)";
             // 
             // resistanceComboBox
             // 
@@ -425,7 +427,7 @@
             this.resistanceComboBox.Name = "resistanceComboBox";
             this.resistanceComboBox.Size = new System.Drawing.Size(121, 21);
             this.resistanceComboBox.TabIndex = 0;
-            this.resistanceComboBox.Text = "Resistance (Ω)";
+            this.resistanceComboBox.Text = "Select Resistance (Ω)";
             // 
             // lComponentAttrGroupBox
             // 
@@ -604,7 +606,7 @@
             this.viewItemButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.viewItemButton.Font = new System.Drawing.Font("Impact", 12F);
             this.viewItemButton.ForeColor = System.Drawing.Color.Snow;
-            this.viewItemButton.Location = new System.Drawing.Point(498, 86);
+            this.viewItemButton.Location = new System.Drawing.Point(393, 86);
             this.viewItemButton.Margin = new System.Windows.Forms.Padding(2);
             this.viewItemButton.Name = "viewItemButton";
             this.viewItemButton.Size = new System.Drawing.Size(101, 28);
@@ -617,7 +619,7 @@
             this.locateItemButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.locateItemButton.Font = new System.Drawing.Font("Impact", 12F);
             this.locateItemButton.ForeColor = System.Drawing.Color.Snow;
-            this.locateItemButton.Location = new System.Drawing.Point(393, 86);
+            this.locateItemButton.Location = new System.Drawing.Point(499, 86);
             this.locateItemButton.Margin = new System.Windows.Forms.Padding(2);
             this.locateItemButton.Name = "locateItemButton";
             this.locateItemButton.Size = new System.Drawing.Size(101, 28);
@@ -675,7 +677,7 @@
             this.outputPane.BackColor = System.Drawing.SystemColors.WindowText;
             this.outputPane.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.outputPane.Cursor = System.Windows.Forms.Cursors.Default;
-            this.outputPane.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.outputPane.Font = new System.Drawing.Font("Courier New", 7F);
             this.outputPane.ForeColor = System.Drawing.Color.Lime;
             this.outputPane.Location = new System.Drawing.Point(24, 86);
             this.outputPane.Margin = new System.Windows.Forms.Padding(2);
@@ -838,6 +840,16 @@
             this.disconnectButton.UseVisualStyleBackColor = false;
             this.disconnectButton.Click += new System.EventHandler(this.disconnectButton_Click);
             // 
+            // includePaymentInfoCheckBox
+            // 
+            this.includePaymentInfoCheckBox.AutoSize = true;
+            this.includePaymentInfoCheckBox.Location = new System.Drawing.Point(169, 183);
+            this.includePaymentInfoCheckBox.Name = "includePaymentInfoCheckBox";
+            this.includePaymentInfoCheckBox.Size = new System.Drawing.Size(160, 17);
+            this.includePaymentInfoCheckBox.TabIndex = 11;
+            this.includePaymentInfoCheckBox.Text = "Include Payment Infomration";
+            this.includePaymentInfoCheckBox.UseVisualStyleBackColor = true;
+            // 
             // mainwindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -857,6 +869,7 @@
             this.Controls.Add(this.PINVLabel);
             this.Controls.Add(this.statusLog);
             this.Controls.Add(this.statusStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "mainwindow";
@@ -912,7 +925,7 @@
         private System.Windows.Forms.Button locateItemButton;
         private System.Windows.Forms.CheckBox debugCheckbox;
         private System.Windows.Forms.GroupBox locateItemGroupBox;
-        private System.Windows.Forms.ComboBox nameCombobox_LI;
+        private System.Windows.Forms.ComboBox nameComboBox_LI;
         private System.Windows.Forms.ComboBox typeComboBox_LI;
         private System.Windows.Forms.RadioButton lComponentRadioButton;
         private System.Windows.Forms.RadioButton toolRadioButton;
@@ -936,6 +949,7 @@
         private System.Windows.Forms.GroupBox lComponentAttrGroupBox;
         private System.Windows.Forms.ComboBox lengthComboBox;
         private System.Windows.Forms.ComboBox gaugeComboBox;
+        private System.Windows.Forms.CheckBox includePaymentInfoCheckBox;
     }
 }
 

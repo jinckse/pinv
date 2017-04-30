@@ -16,15 +16,73 @@ namespace pinv.SQLQueries
 
         #region fields
 
+        /// <summary>
+        /// Gather the basic parts of an SQL query
+        /// </summary>
+        private string _selectStr;
+        public string SelectStr {get; set;}
 
+        private string _fromStr;
+        public string FromStr { get; set; }
+
+        private string _joinOpsStr;
+        public string JoinOpsStr { get; set; }
+
+        private string _whereStr;
+        public string WhereStr { get; set; }
+
+        private string _aggregateOpsStr;
+        public string AggregateOpsStr { get; set; }
 
         #endregion fields
 
         #region methods
 
+        /// <summary>
+        /// Locate an item in the inventory system based on user query
+        /// </summary>
+        /// <returns>query</returns>
+        public string BuildLocateItemQuery()
+        {
+            string query;
 
+            // Connect query parts
+            query = SelectStr + " "
+                + FromStr + " "
+                + JoinOpsStr + " "
+                + WhereStr + " "
+                + AggregateOpsStr;
+
+            // Return result
+            return query;
+        }
+
+        /// <summary>
+        /// View an item in the inventory system based on user query
+        /// </summary>
+        public void BuildViewItemQuery()
+        {
+
+        }
+
+        /// <summary>
+        /// Add an item in the inventory system based on user query
+        /// </summary>
+        public void BuildAddItemQuery()
+        {
+
+        }
+
+        /// <summary>
+        /// Delete an item in the inventory system based on user query
+        /// </summary>
+        public void BuildDeleteItemQuery()
+        {
+
+        }
 
         #endregion methods
 
     }
 }
+

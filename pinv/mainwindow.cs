@@ -1,4 +1,6 @@
-﻿using System;
+﻿using pinv;
+using pinv.SQLQueries;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -54,7 +56,7 @@ namespace PINV
             var inv = Inventory.Instance();
             List<string> output = new List<string>();
 
-            output = inv.RetrieveRecords(dbCon, queryOption);
+            output = inv.RetrieveRecords(dbCon, queryOption, true);
 
             outputPane.AppendText("Result set for query: " + queryOption);
 
@@ -195,7 +197,293 @@ namespace PINV
 
         private void generateReportButton_Click(object sender, EventArgs e)
         {
+            QueryBuilder qb = new QueryBuilder();
+            bool firstWhereEntry = true;
 
+            /// Build Query and send to database
+
+            qb.SelectStr = "select *";
+            qb.WhereStr = "where";
+
+            /// We always use these items when viewing items
+            if (!nameComboBox_LI.Text.Contains("Select"))
+            {
+                if (!firstWhereEntry)
+                {
+                    qb.WhereStr += " and";
+                    qb.WhereStr += (" Name='" + (nameComboBox_LI.Text + "'"));
+                }
+                else
+                {
+                    qb.WhereStr += (" Name='" + (nameComboBox_LI.Text + "'"));
+                    firstWhereEntry = false;
+                }
+            }
+
+            if (!typeComboBox_LI.Text.Contains("Select"))
+            {
+                if (!firstWhereEntry)
+                {
+                    qb.WhereStr += " and";
+                    qb.WhereStr += (" Type='" + (typeComboBox_LI.Text + "'"));
+                }
+                else
+                {
+                    qb.WhereStr += (" Type='" + (typeComboBox_LI.Text + "'"));
+                    firstWhereEntry = false;
+                }
+            }
+
+            if (!supplierComboBox_LI.Text.Contains("Select"))
+            {
+                if (!firstWhereEntry)
+                {
+                    qb.WhereStr += " and";
+                    qb.WhereStr += (" Supplier='" + (supplierComboBox_LI.Text + "'"));
+                }
+                else
+                {
+                    qb.WhereStr += (" Supplier='" + (supplierComboBox_LI.Text + "'"));
+                    firstWhereEntry = false;
+                }
+            }
+
+            if (!priceComboBox_LI.Text.Contains("Select"))
+            {
+                /// < $1.00
+                if (priceComboBox_LI.Text.Contains("< $1.00"))
+                {
+                    if (!firstWhereEntry)
+                    {
+                        qb.WhereStr += " and";
+                        qb.WhereStr += (" Price < 1.00");
+                    }
+                    else
+                    {
+                        qb.WhereStr += (" Price < 1.00");
+                        firstWhereEntry = false;
+                    }
+                }
+                /// > 10.00
+                else if (priceComboBox_LI.Text.Contains("> 10.00"))
+                {
+                    if (!firstWhereEntry)
+                    {
+                        qb.WhereStr += " and";
+                        qb.WhereStr += (" Price > 10.00");
+                    }
+                    else
+                    {
+                        qb.WhereStr += (" Price > 10.00");
+                        firstWhereEntry = false;
+                    }
+                }
+                /// $1.00 - $5.00
+                else if (priceComboBox_LI.Text.Contains("$1.00 - $5.00"))
+                {
+                    if (!firstWhereEntry)
+                    {
+                        qb.WhereStr += " and";
+                        qb.WhereStr += (" Price between 1 and 5");
+                    }
+                    else
+                    {
+                        qb.WhereStr += (" Price between 1 and 5");
+                        firstWhereEntry = false;
+                    }
+                }
+                /// $5.00 - $10.00
+                else if (priceComboBox_LI.Text.Contains("$5.00 - $10.00"))
+                {
+                    if (!firstWhereEntry)
+                    {
+                        qb.WhereStr += " and";
+                        qb.WhereStr += (" Price between 5 and 10");
+                    }
+                    else
+                    {
+                        qb.WhereStr += (" Price between 5 and 10");
+                        firstWhereEntry = false;
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+            if (!purchaseDateComboBox_LI.Text.Contains("Select"))
+            {
+                if (!firstWhereEntry)
+                {
+                    qb.WhereStr += " and";
+                    qb.WhereStr += (" PDate='" + (purchaseDateComboBox_LI.Text + "'"));
+                }
+                else
+                {
+                    qb.WhereStr += (" PDate='" + (purchaseDateComboBox_LI.Text + "'"));
+                    firstWhereEntry = false;
+                }
+            }
+
+            /// Component radio button is selected
+            if (componentRadioButton.Checked)
+            {
+                if (!resistanceComboBox.Text.Contains("Select"))
+                {
+                    if (!firstWhereEntry)
+                    {
+                        qb.WhereStr += " and";
+                        qb.WhereStr += (" Resist='" + (resistanceComboBox.Text + "'"));
+                    }
+                    else
+                    {
+                        qb.WhereStr += (" Resist='" + (resistanceComboBox.Text + "'"));
+                        firstWhereEntry = false;
+                    }
+                }
+                
+                if (!capacitanceComboBox.Text.Contains("Select"))
+                {
+                    if (!firstWhereEntry)
+                    {
+                        qb.WhereStr += " and";
+                        qb.WhereStr += (" Capac='" + (capacitanceComboBox.Text + "'"));
+                    }
+                    else
+                    {
+                        qb.WhereStr += (" Capac='" + (capacitanceComboBox.Text + "'"));
+                        firstWhereEntry = false;
+                    }
+                }
+
+                if (!voltageComboBox.Text.Contains("Select"))
+                {
+                    if (!firstWhereEntry)
+                    {
+                        qb.WhereStr += " and";
+                        qb.WhereStr += (" Voltage='" + (voltageComboBox.Text + "'"));
+                    }
+                    else
+                    {
+                        qb.WhereStr += (" Voltage='" + (voltageComboBox.Text + "'"));
+                        firstWhereEntry = false;
+                    }
+                }
+
+                if (!amperageComboBox.Text.Contains("Select"))
+                {
+                    if (!firstWhereEntry)
+                    {
+                        qb.WhereStr += " and";
+                        qb.WhereStr += (" Amper='" + (amperageComboBox.Text + "'"));
+                    }
+                    else
+                    {
+                        qb.WhereStr += (" Amper='" + (amperageComboBox.Text + "'"));
+                        firstWhereEntry = false;
+                    }
+                }
+            }
+
+            /// Tool radio button is selected
+            if (componentRadioButton.Checked)
+            {
+                if (!cDateComboBox.Text.Contains("Select"))
+                {
+                    if (!firstWhereEntry)
+                    {
+                        qb.WhereStr += " and";
+                        qb.WhereStr += (" CalibrationDate='" + (cDateComboBox.Text + "'"));
+                    }
+                    else
+                    {
+                        qb.WhereStr += (" CalibrationDate='" + (cDateComboBox.Text + "'"));
+                        firstWhereEntry = false;
+                    }
+                }
+
+                if (!statusComboBox.Text.Contains("Select"))
+                {
+                    if (!firstWhereEntry)
+                    {
+                        qb.WhereStr += " and";
+                        qb.WhereStr += (" Status='" + (statusComboBox.Text + "'"));
+                    }
+                    else
+                    {
+                        qb.WhereStr += (" Status='" + (statusComboBox.Text + "'"));
+                        firstWhereEntry = false;
+                    }
+                }
+            }
+
+            /// If no selections were made in the main options use wildcard
+            /// Right now this is catching any insstance where specilized options
+            /// were made. This is messy and should be handled with a dialog message
+            if (nameComboBox_LI.Text.Contains("Select")
+                && typeComboBox_LI.Text.Contains("Select")
+                && supplierComboBox_LI.Text.Contains("Select")
+                && priceComboBox_LI.Text.Contains("Select")
+                && purchaseDateComboBox_LI.Text.Contains("Select"))
+            {
+                qb.WhereStr = "";
+            }
+
+            qb.FromStr = "from ITEM";
+            
+            if (includePaymentInfoCheckBox.Checked)
+            {
+                qb.JoinOpsStr = "join PURCHASE_INFO on (INum = INo)"; 
+            }
+
+            /// Send query to database
+            var inv = Inventory.Instance();
+            List<string> output = new List<string>();
+            string query = qb.BuildLocateItemQuery();
+
+            try
+            {
+                output = inv.RetrieveRecords(dbCon, query);
+
+                /// Populate and show results form
+                ViewItemResults irForm = new ViewItemResults();
+
+                for (int i = 0; i < output.Count; i++)
+                {
+                    if (includePaymentInfoCheckBox.Checked)
+                    {
+                        if ((i % 21) == 0 && i != 0)
+                        {
+                            irForm.viewItemResultsRichTextBox.AppendText("\n");
+                        }
+                    }
+                    else
+                    {
+                        if ((i % 17) == 0 && i != 0)
+                        {
+                            irForm.viewItemResultsRichTextBox.AppendText("\n");
+                        }
+                    }
+
+                    if (output[i] == "")
+                    {
+                        irForm.viewItemResultsRichTextBox.AppendText("N/A" + ",");
+                    }
+                    else
+                    {
+                        irForm.viewItemResultsRichTextBox.AppendText(output[i] + ",");
+                    }
+                }
+
+                //output.ForEach(irForm.viewItemResultsRichTextBox.AppendText);
+                irForm.Show();
+            }
+            catch (NullReferenceException ex)
+            {
+                outputPane.AppendText("\nERROR: A problem occurred reading the database");
+                outputPane.AppendText("\nAre you connected?");
+            }
         }
 
         private void componentRadioButton_CheckedChanged(object sender, EventArgs e)

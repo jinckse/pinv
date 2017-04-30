@@ -62,6 +62,12 @@
     <Compile Include="SQLQueries\Queries.cs" />
     <Compile Include="SQLQueries\QueryBuilder.cs" />
     <Compile Include="TestClass.cs" />
+    <Compile Include="ViewItemResults.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewItemResults.Designer.cs">
+      <DependentUpon>ViewItemResults.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="mainwindow.resx">
       <DependentUpon>mainwindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -74,6 +80,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ViewItemResults.resx">
+      <DependentUpon>ViewItemResults.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\PINV.mainwindow.datasource" />
     <None Include="Properties\DataSources\PINV.SQLQueries.Queries.datasource" />
