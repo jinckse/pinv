@@ -30,7 +30,10 @@ namespace PINV
 
         private void mainwindow_Load(object sender, EventArgs e)
         {
-
+            /// Disable purchase info options by default
+            supplierComboBox_LI.Hide();
+            priceComboBox_LI.Hide();
+            purchaseDateComboBox_LI.Hide();
         }
 
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -201,7 +204,6 @@ namespace PINV
             bool firstWhereEntry = true;
 
             /// Build Query and send to database
-
             qb.SelectStr = "select *";
             qb.WhereStr = "where";
 
@@ -551,6 +553,22 @@ namespace PINV
             gaugeComboBox.Show();
 
             lComponentAttrGroupBox.Show();
+        }
+
+        private void includePaymentInfoCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!includePaymentInfoCheckBox.Checked)
+            {
+                supplierComboBox_LI.Hide();
+                priceComboBox_LI.Hide();
+                purchaseDateComboBox_LI.Hide();
+            }
+            else
+            {
+                supplierComboBox_LI.Show();
+                priceComboBox_LI.Show();
+                purchaseDateComboBox_LI.Show();
+            }
         }
     }
 }

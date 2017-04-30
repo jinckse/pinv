@@ -33,6 +33,7 @@
             this.connectionToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusLog = new System.Windows.Forms.Panel();
             this.locateItemGroupBox = new System.Windows.Forms.GroupBox();
+            this.includePaymentInfoCheckBox = new System.Windows.Forms.CheckBox();
             this.generateReportButton = new System.Windows.Forms.Button();
             this.sortGroupBox = new System.Windows.Forms.GroupBox();
             this.descendingRadioButton = new System.Windows.Forms.RadioButton();
@@ -82,7 +83,6 @@
             this.dbPassTextBox = new System.Windows.Forms.MaskedTextBox();
             this.connectButton = new System.Windows.Forms.Button();
             this.disconnectButton = new System.Windows.Forms.Button();
-            this.includePaymentInfoCheckBox = new System.Windows.Forms.CheckBox();
             this.statusStrip1.SuspendLayout();
             this.statusLog.SuspendLayout();
             this.locateItemGroupBox.SuspendLayout();
@@ -160,6 +160,17 @@
             this.locateItemGroupBox.TabIndex = 15;
             this.locateItemGroupBox.TabStop = false;
             this.locateItemGroupBox.Text = "View an Item in the System";
+            // 
+            // includePaymentInfoCheckBox
+            // 
+            this.includePaymentInfoCheckBox.AutoSize = true;
+            this.includePaymentInfoCheckBox.Location = new System.Drawing.Point(169, 183);
+            this.includePaymentInfoCheckBox.Name = "includePaymentInfoCheckBox";
+            this.includePaymentInfoCheckBox.Size = new System.Drawing.Size(160, 17);
+            this.includePaymentInfoCheckBox.TabIndex = 11;
+            this.includePaymentInfoCheckBox.Text = "Include Payment Infomration";
+            this.includePaymentInfoCheckBox.UseVisualStyleBackColor = true;
+            this.includePaymentInfoCheckBox.CheckedChanged += new System.EventHandler(this.includePaymentInfoCheckBox_CheckedChanged);
             // 
             // generateReportButton
             // 
@@ -839,16 +850,6 @@
             this.disconnectButton.Text = "DISCONNECT";
             this.disconnectButton.UseVisualStyleBackColor = false;
             this.disconnectButton.Click += new System.EventHandler(this.disconnectButton_Click);
-            // 
-            // includePaymentInfoCheckBox
-            // 
-            this.includePaymentInfoCheckBox.AutoSize = true;
-            this.includePaymentInfoCheckBox.Location = new System.Drawing.Point(169, 183);
-            this.includePaymentInfoCheckBox.Name = "includePaymentInfoCheckBox";
-            this.includePaymentInfoCheckBox.Size = new System.Drawing.Size(160, 17);
-            this.includePaymentInfoCheckBox.TabIndex = 11;
-            this.includePaymentInfoCheckBox.Text = "Include Payment Infomration";
-            this.includePaymentInfoCheckBox.UseVisualStyleBackColor = true;
             // 
             // mainwindow
             // 
