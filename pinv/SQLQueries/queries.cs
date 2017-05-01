@@ -20,7 +20,7 @@ namespace PINV.SQLQueries
             "WHERE CFlag=1 AND NAME='Resistor' AND Power=0.25";
 
         /// <summary>
-        /// What is everything I have stored in a bin, purchased before 2017?
+        /// What is everything I have stored in a bin, purchased before 2017, ordered by item number?
         /// </summary>
         public static readonly string q2 = "SELECT INo, Name, IType, Amount, Protocol, PDate\n" +
             "FROM ITEM\n" +
@@ -36,7 +36,7 @@ namespace PINV.SQLQueries
             "ORDER BY INo ASC";
 
         /// <summary>
-        /// Do I have any three-foot USB cables, and when did I purchase them?
+        /// Do I have any three-foot USB cables, and when did I purchase them? Order the output by purchase date.
         /// </summary>
         public static readonly string q3 = "SELECT INo, Name, IType, Amount, Length, Protocol, PDate\n" +
             "FROM ITEM\n" +
@@ -81,6 +81,48 @@ namespace PINV.SQLQueries
             "FROM ITEM\n" +
             "JOIN STORED_IN ON INum = INo\n" +
             "WHERE Name = 'Resistor'";
+
+        /// <summary>
+        /// Where have I stored electrolytic capactitors that I purchased for less than $1.00 each?
+        /// </summary>
+        public static readonly string q7 = "select OLabel as Organizer, DNo, Cmpt " +
+            "from ITEM " +
+            "join PURCHASE_INFO on (INum = INo) " +
+            "join STORED_IN on STORED_IN.INum=INo " +
+            "join DRAWER on SISNum=DSNum " +
+            "join STORAGE_AREA on StoNo=SISNum " +
+            "where Name='Capacitor' and IType='Electrolytic' and Price < 1.00 ";
+
+        /// <summary>
+        /// Where have I stored all components that I purchased in 2015?
+        /// </summary>
+        public static readonly string q8 = "select OLabel as Organizer, DNo, Cmpt " +
+            "from ITEM " +
+            "join PURCHASE_INFO on (INum = INo) " +
+            "join STORED_IN on STORED_IN.INum=INo " +
+            "join DRAWER on SISNum=DSNum " +
+            "join STORAGE_AREA on StoNo=SISNum " +
+            "where year(PDate) = 2015 ";
+
+        /// <summary>
+        /// Where have I stored any tools with currently in "repair" status?
+        /// </summary>
+        public static readonly string q9 = "select PLabel as Pegboard, HNo " +
+            "from ITEM  " +
+            "join STORED_IN on STORED_IN.INum=INo " +
+            "join HOOK on SISNum=HSNum " +
+            "join STORAGE_AREA on StoNo=SISNum where Status='Repair' ";
+
+        /// <summary>
+        /// What kind of solder do I own, and where did I get it from?
+        /// </summary>
+        public static readonly string q10 = "select * " +
+            "from ITEM " +
+            "join PURCHASE_INFO on (INum = INo) " +
+            "where Name='Solder' " +
+            "group by INo " +
+            "having Amount > 0 " +
+            "order by Name desc";
 
         #endregion fields
     }

@@ -365,7 +365,6 @@
             "2016",
             "2017",
             "Before 2012",
-            "Before 2017",
             "Select Item Purchase Date"});
             this.purchaseDateComboBox_LI.Location = new System.Drawing.Point(6, 77);
             this.purchaseDateComboBox_LI.Name = "purchaseDateComboBox_LI";
@@ -457,6 +456,7 @@
             "Manual",
             "Module",
             "Rosin-Core",
+            "Select Item Type",
             "Select Item Type",
             "Stranded-Core",
             "Through-Hole",
@@ -743,8 +743,13 @@
             "Q2: What is everything I have stored in a bin, purchased before 2017?",
             "Q3: Do I have any three-foot USB cables, and when did I purchase them?",
             "Q4: Where can I find a 3 foot USB Type-C cable?",
-            "Q5: Where have I stored the elast expensive capacitors I own?",
-            "Q6: How many resistors do I have stored in the system?"});
+            "Q5: Where have I stored the least expensive capacitors I own?",
+            "Q6: How many resistors do I have stored in the system?",
+            "Q7: Where have I stored electrolytic capactitors that I purchased for less than $" +
+                "1.00 each?",
+            "Q8: Where have I stored all components that I purchased in 2015?",
+            "Q9: Where have I stored any tools with currently in \"repair\" status?",
+            "Q10: What kind of solder do I own, and where did I get it from?"});
             this.comboBox1.Location = new System.Drawing.Point(143, 33);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";

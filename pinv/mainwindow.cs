@@ -110,6 +110,22 @@ namespace PINV
             {
                 queryOption = SQLQueries.Queries.q6;
             }
+            else if (queryOption.Equals("Q7"))
+            {
+                queryOption = SQLQueries.Queries.q7;
+            }
+            else if (queryOption.Equals("Q8"))
+            {
+                queryOption = SQLQueries.Queries.q8;
+            }
+            else if (queryOption.Equals("Q9"))
+            {
+                queryOption = SQLQueries.Queries.q9;
+            }
+            else if (queryOption.Equals("Q10"))
+            {
+                queryOption = SQLQueries.Queries.q10;
+            }
             else
             {
                 /// Should never get here
