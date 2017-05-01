@@ -32,6 +32,12 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.connectionToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusLog = new System.Windows.Forms.Panel();
+            this.chooseDatabaseActionGroupBox = new System.Windows.Forms.GroupBox();
+            this.deleteItemRadioButton = new System.Windows.Forms.RadioButton();
+            this.updateItemRadioButton = new System.Windows.Forms.RadioButton();
+            this.addItemRadioButton = new System.Windows.Forms.RadioButton();
+            this.locateItemRadioButton = new System.Windows.Forms.RadioButton();
+            this.viewItemRadioButton = new System.Windows.Forms.RadioButton();
             this.locateItemGroupBox = new System.Windows.Forms.GroupBox();
             this.includePaymentInfoCheckBox = new System.Windows.Forms.CheckBox();
             this.generateReportButton = new System.Windows.Forms.Button();
@@ -78,14 +84,12 @@
             this.dbPassTextBox = new System.Windows.Forms.MaskedTextBox();
             this.connectButton = new System.Windows.Forms.Button();
             this.disconnectButton = new System.Windows.Forms.Button();
-            this.chooseDatabaseActionGroupBox = new System.Windows.Forms.GroupBox();
-            this.viewItemRadioButton = new System.Windows.Forms.RadioButton();
-            this.locateItemRadioButton = new System.Windows.Forms.RadioButton();
-            this.addItemRadioButton = new System.Windows.Forms.RadioButton();
-            this.updateItemRadioButton = new System.Windows.Forms.RadioButton();
-            this.deleteItemRadioButton = new System.Windows.Forms.RadioButton();
+            this.totalPriceTextBox = new System.Windows.Forms.TextBox();
+            this.totalPriceLabel = new System.Windows.Forms.Label();
+            this.calculateTotalPriceButton = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.statusLog.SuspendLayout();
+            this.chooseDatabaseActionGroupBox.SuspendLayout();
             this.locateItemGroupBox.SuspendLayout();
             this.sortGroupBox.SuspendLayout();
             this.componentAttrGroupBox.SuspendLayout();
@@ -95,7 +99,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.mainwindowBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.queriesBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainwindowBindingSource1)).BeginInit();
-            this.chooseDatabaseActionGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -137,8 +140,80 @@
             this.statusLog.Size = new System.Drawing.Size(946, 392);
             this.statusLog.TabIndex = 2;
             // 
+            // chooseDatabaseActionGroupBox
+            // 
+            this.chooseDatabaseActionGroupBox.Controls.Add(this.deleteItemRadioButton);
+            this.chooseDatabaseActionGroupBox.Controls.Add(this.updateItemRadioButton);
+            this.chooseDatabaseActionGroupBox.Controls.Add(this.addItemRadioButton);
+            this.chooseDatabaseActionGroupBox.Controls.Add(this.locateItemRadioButton);
+            this.chooseDatabaseActionGroupBox.Controls.Add(this.viewItemRadioButton);
+            this.chooseDatabaseActionGroupBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.chooseDatabaseActionGroupBox.Location = new System.Drawing.Point(393, 67);
+            this.chooseDatabaseActionGroupBox.Name = "chooseDatabaseActionGroupBox";
+            this.chooseDatabaseActionGroupBox.Size = new System.Drawing.Size(523, 52);
+            this.chooseDatabaseActionGroupBox.TabIndex = 16;
+            this.chooseDatabaseActionGroupBox.TabStop = false;
+            this.chooseDatabaseActionGroupBox.Text = "Choose Database Action";
+            // 
+            // deleteItemRadioButton
+            // 
+            this.deleteItemRadioButton.AutoSize = true;
+            this.deleteItemRadioButton.Location = new System.Drawing.Point(387, 19);
+            this.deleteItemRadioButton.Name = "deleteItemRadioButton";
+            this.deleteItemRadioButton.Size = new System.Drawing.Size(79, 17);
+            this.deleteItemRadioButton.TabIndex = 4;
+            this.deleteItemRadioButton.Text = "Delete Item";
+            this.deleteItemRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // updateItemRadioButton
+            // 
+            this.updateItemRadioButton.AutoSize = true;
+            this.updateItemRadioButton.Location = new System.Drawing.Point(291, 19);
+            this.updateItemRadioButton.Name = "updateItemRadioButton";
+            this.updateItemRadioButton.Size = new System.Drawing.Size(83, 17);
+            this.updateItemRadioButton.TabIndex = 3;
+            this.updateItemRadioButton.Text = "Update Item";
+            this.updateItemRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // addItemRadioButton
+            // 
+            this.addItemRadioButton.AutoSize = true;
+            this.addItemRadioButton.Location = new System.Drawing.Point(200, 19);
+            this.addItemRadioButton.Name = "addItemRadioButton";
+            this.addItemRadioButton.Size = new System.Drawing.Size(67, 17);
+            this.addItemRadioButton.TabIndex = 2;
+            this.addItemRadioButton.Text = "Add Item";
+            this.addItemRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // locateItemRadioButton
+            // 
+            this.locateItemRadioButton.AutoSize = true;
+            this.locateItemRadioButton.Location = new System.Drawing.Point(107, 19);
+            this.locateItemRadioButton.Name = "locateItemRadioButton";
+            this.locateItemRadioButton.Size = new System.Drawing.Size(81, 17);
+            this.locateItemRadioButton.TabIndex = 1;
+            this.locateItemRadioButton.Text = "Locate Item";
+            this.locateItemRadioButton.UseVisualStyleBackColor = true;
+            this.locateItemRadioButton.CheckedChanged += new System.EventHandler(this.locateItemRadioButton_CheckedChanged);
+            // 
+            // viewItemRadioButton
+            // 
+            this.viewItemRadioButton.AutoSize = true;
+            this.viewItemRadioButton.Checked = true;
+            this.viewItemRadioButton.Location = new System.Drawing.Point(16, 19);
+            this.viewItemRadioButton.Name = "viewItemRadioButton";
+            this.viewItemRadioButton.Size = new System.Drawing.Size(71, 17);
+            this.viewItemRadioButton.TabIndex = 0;
+            this.viewItemRadioButton.TabStop = true;
+            this.viewItemRadioButton.Text = "View Item";
+            this.viewItemRadioButton.UseVisualStyleBackColor = true;
+            this.viewItemRadioButton.CheckedChanged += new System.EventHandler(this.viewItemRadioButton_CheckedChanged);
+            // 
             // locateItemGroupBox
             // 
+            this.locateItemGroupBox.Controls.Add(this.calculateTotalPriceButton);
+            this.locateItemGroupBox.Controls.Add(this.totalPriceLabel);
+            this.locateItemGroupBox.Controls.Add(this.totalPriceTextBox);
             this.locateItemGroupBox.Controls.Add(this.includePaymentInfoCheckBox);
             this.locateItemGroupBox.Controls.Add(this.generateReportButton);
             this.locateItemGroupBox.Controls.Add(this.sortGroupBox);
@@ -162,7 +237,7 @@
             // includePaymentInfoCheckBox
             // 
             this.includePaymentInfoCheckBox.AutoSize = true;
-            this.includePaymentInfoCheckBox.Location = new System.Drawing.Point(169, 221);
+            this.includePaymentInfoCheckBox.Location = new System.Drawing.Point(169, 227);
             this.includePaymentInfoCheckBox.Name = "includePaymentInfoCheckBox";
             this.includePaymentInfoCheckBox.Size = new System.Drawing.Size(160, 17);
             this.includePaymentInfoCheckBox.TabIndex = 11;
@@ -176,9 +251,9 @@
             this.generateReportButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.generateReportButton.Font = new System.Drawing.Font("Impact", 15F);
             this.generateReportButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.generateReportButton.Location = new System.Drawing.Point(6, 199);
+            this.generateReportButton.Location = new System.Drawing.Point(6, 183);
             this.generateReportButton.Name = "generateReportButton";
-            this.generateReportButton.Size = new System.Drawing.Size(157, 39);
+            this.generateReportButton.Size = new System.Drawing.Size(157, 61);
             this.generateReportButton.TabIndex = 9;
             this.generateReportButton.Text = "Generate Report";
             this.generateReportButton.UseVisualStyleBackColor = false;
@@ -799,74 +874,32 @@
             this.disconnectButton.UseVisualStyleBackColor = false;
             this.disconnectButton.Click += new System.EventHandler(this.disconnectButton_Click);
             // 
-            // chooseDatabaseActionGroupBox
+            // totalPriceTextBox
             // 
-            this.chooseDatabaseActionGroupBox.Controls.Add(this.deleteItemRadioButton);
-            this.chooseDatabaseActionGroupBox.Controls.Add(this.updateItemRadioButton);
-            this.chooseDatabaseActionGroupBox.Controls.Add(this.addItemRadioButton);
-            this.chooseDatabaseActionGroupBox.Controls.Add(this.locateItemRadioButton);
-            this.chooseDatabaseActionGroupBox.Controls.Add(this.viewItemRadioButton);
-            this.chooseDatabaseActionGroupBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.chooseDatabaseActionGroupBox.Location = new System.Drawing.Point(393, 67);
-            this.chooseDatabaseActionGroupBox.Name = "chooseDatabaseActionGroupBox";
-            this.chooseDatabaseActionGroupBox.Size = new System.Drawing.Size(523, 52);
-            this.chooseDatabaseActionGroupBox.TabIndex = 16;
-            this.chooseDatabaseActionGroupBox.TabStop = false;
-            this.chooseDatabaseActionGroupBox.Text = "Choose Database Action";
+            this.totalPriceTextBox.Location = new System.Drawing.Point(233, 204);
+            this.totalPriceTextBox.Name = "totalPriceTextBox";
+            this.totalPriceTextBox.Size = new System.Drawing.Size(63, 20);
+            this.totalPriceTextBox.TabIndex = 12;
             // 
-            // viewItemRadioButton
+            // totalPriceLabel
             // 
-            this.viewItemRadioButton.AutoSize = true;
-            this.viewItemRadioButton.Checked = true;
-            this.viewItemRadioButton.Location = new System.Drawing.Point(16, 19);
-            this.viewItemRadioButton.Name = "viewItemRadioButton";
-            this.viewItemRadioButton.Size = new System.Drawing.Size(71, 17);
-            this.viewItemRadioButton.TabIndex = 0;
-            this.viewItemRadioButton.TabStop = true;
-            this.viewItemRadioButton.Text = "View Item";
-            this.viewItemRadioButton.UseVisualStyleBackColor = true;
-            this.viewItemRadioButton.CheckedChanged += new System.EventHandler(this.viewItemRadioButton_CheckedChanged);
+            this.totalPriceLabel.AutoSize = true;
+            this.totalPriceLabel.Location = new System.Drawing.Point(169, 207);
+            this.totalPriceLabel.Name = "totalPriceLabel";
+            this.totalPriceLabel.Size = new System.Drawing.Size(58, 13);
+            this.totalPriceLabel.TabIndex = 13;
+            this.totalPriceLabel.Text = "Total Price";
             // 
-            // locateItemRadioButton
+            // calculateTotalPriceButton
             // 
-            this.locateItemRadioButton.AutoSize = true;
-            this.locateItemRadioButton.Location = new System.Drawing.Point(107, 19);
-            this.locateItemRadioButton.Name = "locateItemRadioButton";
-            this.locateItemRadioButton.Size = new System.Drawing.Size(81, 17);
-            this.locateItemRadioButton.TabIndex = 1;
-            this.locateItemRadioButton.Text = "Locate Item";
-            this.locateItemRadioButton.UseVisualStyleBackColor = true;
-            this.locateItemRadioButton.CheckedChanged += new System.EventHandler(this.locateItemRadioButton_CheckedChanged);
-            // 
-            // addItemRadioButton
-            // 
-            this.addItemRadioButton.AutoSize = true;
-            this.addItemRadioButton.Location = new System.Drawing.Point(200, 19);
-            this.addItemRadioButton.Name = "addItemRadioButton";
-            this.addItemRadioButton.Size = new System.Drawing.Size(67, 17);
-            this.addItemRadioButton.TabIndex = 2;
-            this.addItemRadioButton.Text = "Add Item";
-            this.addItemRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // updateItemRadioButton
-            // 
-            this.updateItemRadioButton.AutoSize = true;
-            this.updateItemRadioButton.Location = new System.Drawing.Point(291, 19);
-            this.updateItemRadioButton.Name = "updateItemRadioButton";
-            this.updateItemRadioButton.Size = new System.Drawing.Size(83, 17);
-            this.updateItemRadioButton.TabIndex = 3;
-            this.updateItemRadioButton.Text = "Update Item";
-            this.updateItemRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // deleteItemRadioButton
-            // 
-            this.deleteItemRadioButton.AutoSize = true;
-            this.deleteItemRadioButton.Location = new System.Drawing.Point(387, 19);
-            this.deleteItemRadioButton.Name = "deleteItemRadioButton";
-            this.deleteItemRadioButton.Size = new System.Drawing.Size(79, 17);
-            this.deleteItemRadioButton.TabIndex = 4;
-            this.deleteItemRadioButton.Text = "Delete Item";
-            this.deleteItemRadioButton.UseVisualStyleBackColor = true;
+            this.calculateTotalPriceButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.calculateTotalPriceButton.Location = new System.Drawing.Point(302, 202);
+            this.calculateTotalPriceButton.Name = "calculateTotalPriceButton";
+            this.calculateTotalPriceButton.Size = new System.Drawing.Size(75, 23);
+            this.calculateTotalPriceButton.TabIndex = 14;
+            this.calculateTotalPriceButton.Text = "Calculate";
+            this.calculateTotalPriceButton.UseVisualStyleBackColor = true;
+            this.calculateTotalPriceButton.Click += new System.EventHandler(this.calculateTotalPriceButton_Click);
             // 
             // mainwindow
             // 
@@ -897,6 +930,8 @@
             this.statusStrip1.PerformLayout();
             this.statusLog.ResumeLayout(false);
             this.statusLog.PerformLayout();
+            this.chooseDatabaseActionGroupBox.ResumeLayout(false);
+            this.chooseDatabaseActionGroupBox.PerformLayout();
             this.locateItemGroupBox.ResumeLayout(false);
             this.locateItemGroupBox.PerformLayout();
             this.sortGroupBox.ResumeLayout(false);
@@ -908,8 +943,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.mainwindowBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.queriesBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainwindowBindingSource1)).EndInit();
-            this.chooseDatabaseActionGroupBox.ResumeLayout(false);
-            this.chooseDatabaseActionGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -964,13 +997,16 @@
         private System.Windows.Forms.GroupBox lComponentAttrGroupBox;
         private System.Windows.Forms.ComboBox lengthComboBox;
         private System.Windows.Forms.ComboBox gaugeComboBox;
-        private System.Windows.Forms.CheckBox includePaymentInfoCheckBox;
         private System.Windows.Forms.GroupBox chooseDatabaseActionGroupBox;
         private System.Windows.Forms.RadioButton deleteItemRadioButton;
         private System.Windows.Forms.RadioButton updateItemRadioButton;
         private System.Windows.Forms.RadioButton addItemRadioButton;
         private System.Windows.Forms.RadioButton locateItemRadioButton;
         private System.Windows.Forms.RadioButton viewItemRadioButton;
+        public System.Windows.Forms.CheckBox includePaymentInfoCheckBox;
+        private System.Windows.Forms.Button calculateTotalPriceButton;
+        private System.Windows.Forms.Label totalPriceLabel;
+        private System.Windows.Forms.TextBox totalPriceTextBox;
     }
 }
 

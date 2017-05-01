@@ -15,6 +15,7 @@ namespace PINV
     public partial class mainwindow : Form
     {
         DBTalker dbCon = DBTalker.Instance();
+        QueryBuilder qb = new QueryBuilder();
 
         public mainwindow()
         {
@@ -200,7 +201,6 @@ namespace PINV
 
         private void generateReportButton_Click(object sender, EventArgs e)
         {
-            QueryBuilder qb = new QueryBuilder();
             bool firstWhereEntry = true;
 
             /// Build Query and send to database
@@ -540,6 +540,10 @@ namespace PINV
             {
                 qb.JoinOpsStr = "join PURCHASE_INFO on (INum = INo)"; 
             }
+            else
+            {
+                qb.JoinOpsStr = "";
+            }
 
             /// Sort results alphabetically by name
             if (ascendingRadioButton.Checked)
@@ -609,7 +613,8 @@ namespace PINV
                             irForm.viewItemResultsRichTextBox.AppendText("\n");
                         }
                     }
-
+                    
+                    /// Handle null results from database
                     if (output[i] == "")
                     {
                         irForm.viewItemResultsRichTextBox.AppendText("N/A" + ",");
@@ -620,11 +625,16 @@ namespace PINV
                     }
                 }
 
+                /// Show total price of items returned
+                                
+
+                /// Show total Quantity of items returned
                 //output.ForEach(irForm.viewItemResultsRichTextBox.AppendText);
                 irForm.Show();
             }
             catch (NullReferenceException ex)
             {
+                outputPane.ForeColor = Color.Red;
                 outputPane.AppendText("\nERROR: A problem occurred reading the database");
                 outputPane.AppendText("\nAre you connected?");
             }
@@ -723,6 +733,65 @@ namespace PINV
         {
             /// Show Payment Info checkbox when this action is selected
             includePaymentInfoCheckBox.Show();
+        }
+
+        private void calculateTotalPriceButton_Click(object sender, EventArgs e)
+        {
+            /// Submit total price query and show result in textbox
+
+            /// Save current values
+            string oldSelectStr = qb.SelectStr;
+            string oldAggStr = qb.AggregateOpsStr;
+
+            /// Make necessary changes for valid response
+            qb.SelectStr = "select sum(Price)";
+            qb.AggregateOpsStr = "";
+
+            var inv = Inventory.Instance();
+            List<string> output = new List<string>();
+            string query = qb.BuildViewItemQuery();
+
+            try
+            {
+                output = inv.RetrieveRecords(dbCon, query);
+
+                /// Populate and show results form
+                ViewItemResults irForm = new ViewItemResults();
+
+                for (int i = 0; i < output.Count; i++)
+                {
+                    /// Handle null results from database
+                    if (output[i] == "")
+                    {
+                        irForm.viewItemResultsRichTextBox.AppendText("N/A" + ",");
+                    }
+                    else
+                    {
+                        irForm.viewItemResultsRichTextBox.AppendText(output[i] + ",");
+                    }
+                }
+
+                /// Show total price of items returned
+                try
+                {
+                    totalPriceTextBox.ForeColor = Color.Black;
+                    totalPriceTextBox.Text = output[1];
+                }
+                catch (Exception ex)
+                {
+                    totalPriceTextBox.Text = "Error";
+                    totalPriceTextBox.ForeColor = Color.Red;
+                }
+            }
+            catch (NullReferenceException ex)
+            {
+                outputPane.AppendText("\nERROR: A problem occurred reading the database");
+                outputPane.AppendText("\nAre you connected?");
+            }
+
+            /// Reinstate original query
+            qb.SelectStr = oldSelectStr;
+            qb.AggregateOpsStr = oldAggStr;
         }
     }
 }
