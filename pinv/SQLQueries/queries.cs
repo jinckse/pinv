@@ -27,7 +27,7 @@ namespace PINV.SQLQueries
             "FROM ITEM\n" +
             "JOIN PURCHASE_INFO ON INum=INo\n" +
             "WHERE LCFlag=1 AND Name='Cable' AND Length=3 AND Protocol='USB'\n" +
-            "GROUP BY IType\n" +
+            "GROUP BY INo\n" +
             "HAVING Amount > 0\n" +
             "ORDER BY PDate";
 
@@ -43,7 +43,7 @@ namespace PINV.SQLQueries
             "\tJOIN STORED_IN ON (STORAGE_AREA.StoNo = STORED_IN.SISNum)\n" +
             "\tWHERE BFlag=1)\n" +
             ")\n" +
-            "GROUP BY IType\n" +
+            "GROUP BY INo\n" +
             "HAVING PDate < '2017-01-10'\n" +
             "ORDER BY INo ASC";
 

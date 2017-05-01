@@ -210,11 +210,11 @@ namespace PINV
             /// Sort results alphabetically by name
             if (ascendingRadioButton.Checked)
             {
-                qb.AggregateOpsStr = "group by IType having Amount > 0 order by Name asc";
+                qb.AggregateOpsStr = "group by INo having Amount > 0 order by Name asc";
             }
             else
             {
-                qb.AggregateOpsStr = "group by IType having Amount > 0 order by Name desc";
+                qb.AggregateOpsStr = "group by INo having Amount > 0 order by Name desc";
             }
 
             /// We always use these items when viewing items
@@ -265,11 +265,11 @@ namespace PINV
                 /// Sort results numerically by price
                 if (ascendingRadioButton.Checked)
                 {
-                    qb.AggregateOpsStr = "group by IType having Amount > 0 order by Price asc";
+                    qb.AggregateOpsStr = "group by INo having Amount > 0 order by Price asc";
                 }
                 else
                 {
-                    qb.AggregateOpsStr = "group by IType having Amount > 0 order by Price desc";
+                    qb.AggregateOpsStr = "group by INo having Amount > 0 order by Price desc";
                 }
 
                 /// < $1.00
