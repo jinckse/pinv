@@ -227,11 +227,11 @@ namespace PINV
                 if (!firstWhereEntry)
                 {
                     qb.WhereStr += " and";
-                    qb.WhereStr += (" Type='" + (typeComboBox_LI.Text + "'"));
+                    qb.WhereStr += (" IType='" + (typeComboBox_LI.Text + "'"));
                 }
                 else
                 {
-                    qb.WhereStr += (" Type='" + (typeComboBox_LI.Text + "'"));
+                    qb.WhereStr += (" IType='" + (typeComboBox_LI.Text + "'"));
                     firstWhereEntry = false;
                 }
             }
@@ -316,15 +316,65 @@ namespace PINV
 
             if (!purchaseDateComboBox_LI.Text.Contains("Select"))
             {
-                if (!firstWhereEntry)
+                /// 2012
+                if (purchaseDateComboBox_LI.Text.Contains("2012"))
                 {
-                    qb.WhereStr += " and";
-                    qb.WhereStr += (" PDate='" + (purchaseDateComboBox_LI.Text + "'"));
+                    if (!firstWhereEntry)
+                    {
+                        qb.WhereStr += " and";
+                        qb.WhereStr += (" year(PDate) = 2012");
+                    }
+                    else
+                    {
+                        qb.WhereStr += (" year(PDate) = 2012");
+                        firstWhereEntry = false;
+                    }
+                }
+                /// 2013
+                else if (purchaseDateComboBox_LI.Text.Contains("2013"))
+                {
+                    if (!firstWhereEntry)
+                    {
+                        qb.WhereStr += " and";
+                        qb.WhereStr += (" year(PDate) = 2013");
+                    }
+                    else
+                    {
+                        qb.WhereStr += (" year(PDate) = 2013");
+                        firstWhereEntry = false;
+                    }
+                }
+                /// 2014
+                else if (purchaseDateComboBox_LI.Text.Contains("2014"))
+                {
+                    if (!firstWhereEntry)
+                    {
+                        qb.WhereStr += " and";
+                        qb.WhereStr += (" year(PDate) = 2014");
+                    }
+                    else
+                    {
+                        qb.WhereStr += (" year(PDate) = 2014");
+                        firstWhereEntry = false;
+                    }
+                }
+                /// 2015
+                else if (purchaseDateComboBox_LI.Text.Contains("2015"))
+                {
+                    if (!firstWhereEntry)
+                    {
+                        qb.WhereStr += " and";
+                        qb.WhereStr += (" year(PDate) = 2015");
+                    }
+                    else
+                    {
+                        qb.WhereStr += (" year(PDate) = 2015");
+                        firstWhereEntry = false;
+                    }
                 }
                 else
                 {
-                    qb.WhereStr += (" PDate='" + (purchaseDateComboBox_LI.Text + "'"));
-                    firstWhereEntry = false;
+
                 }
             }
 
@@ -415,6 +465,52 @@ namespace PINV
                     else
                     {
                         qb.WhereStr += (" Status='" + (statusComboBox.Text + "'"));
+                        firstWhereEntry = false;
+                    }
+                }
+            }
+
+            /// Large Component radio button is selected
+            if (lComponentRadioButton.Checked)
+            {
+                if (!protocolComboBox.Text.Contains("Select"))
+                {
+                    if (!firstWhereEntry)
+                    {
+                        qb.WhereStr += " and";
+                        qb.WhereStr += (" Protocol='" + (protocolComboBox.Text + "'"));
+                    }
+                    else
+                    {
+                        qb.WhereStr += (" Protocol='" + (protocolComboBox.Text + "'"));
+                        firstWhereEntry = false;
+                    }
+                }
+
+                if (!lengthComboBox.Text.Contains("Select"))
+                {
+                    if (!firstWhereEntry)
+                    {
+                        qb.WhereStr += " and";
+                        qb.WhereStr += (" Length=" + (lengthComboBox.Text));
+                    }
+                    else
+                    {
+                        qb.WhereStr += (" Length=" + (lengthComboBox.Text));
+                        firstWhereEntry = false;
+                    }
+                }
+
+                if (!gaugeComboBox.Text.Contains("Select"))
+                {
+                    if (!firstWhereEntry)
+                    {
+                        qb.WhereStr += " and";
+                        qb.WhereStr += (" Gauge=" + (gaugeComboBox.Text));
+                    }
+                    else
+                    {
+                        qb.WhereStr += (" Gauge=" + (gaugeComboBox.Text));
                         firstWhereEntry = false;
                     }
                 }

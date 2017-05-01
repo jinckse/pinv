@@ -325,6 +325,7 @@
             "Module",
             "Rosin-Core",
             "Select Item Type",
+            "Select Item Type",
             "Stranded-Core",
             "Through-Hole",
             "Type-A",
