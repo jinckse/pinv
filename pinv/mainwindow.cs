@@ -199,7 +199,7 @@ namespace PINV
             dbCon.Close();
 
             outputPane.AppendText("\nDisconnected from database: " + dbCon.DatabaseName);
-            connectionToolStripStatusLabel.Text = "MYSQL Connection Status: Disconnected";
+            connectionToolStripStatusLabel.Text = "MySQL Connection Status: Disconnected";
             connectionToolStripStatusLabel.ForeColor = Color.Red;
         }
 
