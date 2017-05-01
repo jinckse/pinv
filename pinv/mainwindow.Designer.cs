@@ -59,11 +59,6 @@
             this.statusComboBox = new System.Windows.Forms.ComboBox();
             this.cDateComboBox = new System.Windows.Forms.ComboBox();
             this.debugCheckbox = new System.Windows.Forms.CheckBox();
-            this.deleteItemButton = new System.Windows.Forms.Button();
-            this.updateItemButton = new System.Windows.Forms.Button();
-            this.addItemButton = new System.Windows.Forms.Button();
-            this.viewItemButton = new System.Windows.Forms.Button();
-            this.locateItemButton = new System.Windows.Forms.Button();
             this.activityPaneLabel = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.submitOutput = new System.Windows.Forms.Button();
@@ -83,6 +78,12 @@
             this.dbPassTextBox = new System.Windows.Forms.MaskedTextBox();
             this.connectButton = new System.Windows.Forms.Button();
             this.disconnectButton = new System.Windows.Forms.Button();
+            this.chooseDatabaseActionGroupBox = new System.Windows.Forms.GroupBox();
+            this.viewItemRadioButton = new System.Windows.Forms.RadioButton();
+            this.locateItemRadioButton = new System.Windows.Forms.RadioButton();
+            this.addItemRadioButton = new System.Windows.Forms.RadioButton();
+            this.updateItemRadioButton = new System.Windows.Forms.RadioButton();
+            this.deleteItemRadioButton = new System.Windows.Forms.RadioButton();
             this.statusStrip1.SuspendLayout();
             this.statusLog.SuspendLayout();
             this.locateItemGroupBox.SuspendLayout();
@@ -94,6 +95,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.mainwindowBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.queriesBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainwindowBindingSource1)).BeginInit();
+            this.chooseDatabaseActionGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -121,13 +123,9 @@
             this.statusLog.AutoScroll = true;
             this.statusLog.AutoSize = true;
             this.statusLog.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.statusLog.Controls.Add(this.chooseDatabaseActionGroupBox);
             this.statusLog.Controls.Add(this.locateItemGroupBox);
             this.statusLog.Controls.Add(this.debugCheckbox);
-            this.statusLog.Controls.Add(this.deleteItemButton);
-            this.statusLog.Controls.Add(this.updateItemButton);
-            this.statusLog.Controls.Add(this.addItemButton);
-            this.statusLog.Controls.Add(this.viewItemButton);
-            this.statusLog.Controls.Add(this.locateItemButton);
             this.statusLog.Controls.Add(this.activityPaneLabel);
             this.statusLog.Controls.Add(this.comboBox1);
             this.statusLog.Controls.Add(this.submitOutput);
@@ -164,7 +162,7 @@
             // includePaymentInfoCheckBox
             // 
             this.includePaymentInfoCheckBox.AutoSize = true;
-            this.includePaymentInfoCheckBox.Location = new System.Drawing.Point(169, 183);
+            this.includePaymentInfoCheckBox.Location = new System.Drawing.Point(169, 221);
             this.includePaymentInfoCheckBox.Name = "includePaymentInfoCheckBox";
             this.includePaymentInfoCheckBox.Size = new System.Drawing.Size(160, 17);
             this.includePaymentInfoCheckBox.TabIndex = 11;
@@ -178,7 +176,7 @@
             this.generateReportButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.generateReportButton.Font = new System.Drawing.Font("Impact", 15F);
             this.generateReportButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.generateReportButton.Location = new System.Drawing.Point(6, 183);
+            this.generateReportButton.Location = new System.Drawing.Point(6, 199);
             this.generateReportButton.Name = "generateReportButton";
             this.generateReportButton.Size = new System.Drawing.Size(157, 39);
             this.generateReportButton.TabIndex = 9;
@@ -217,7 +215,6 @@
             this.ascendingRadioButton.Name = "ascendingRadioButton";
             this.ascendingRadioButton.Size = new System.Drawing.Size(75, 17);
             this.ascendingRadioButton.TabIndex = 0;
-            this.ascendingRadioButton.TabStop = true;
             this.ascendingRadioButton.Text = "Ascending";
             this.ascendingRadioButton.UseVisualStyleBackColor = true;
             // 
@@ -589,71 +586,6 @@
             this.debugCheckbox.Text = "Debug";
             this.debugCheckbox.UseVisualStyleBackColor = true;
             // 
-            // deleteItemButton
-            // 
-            this.deleteItemButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.deleteItemButton.Font = new System.Drawing.Font("Impact", 12F);
-            this.deleteItemButton.ForeColor = System.Drawing.Color.Snow;
-            this.deleteItemButton.Location = new System.Drawing.Point(816, 86);
-            this.deleteItemButton.Margin = new System.Windows.Forms.Padding(2);
-            this.deleteItemButton.Name = "deleteItemButton";
-            this.deleteItemButton.Size = new System.Drawing.Size(101, 28);
-            this.deleteItemButton.TabIndex = 13;
-            this.deleteItemButton.Text = "Delete Item";
-            this.deleteItemButton.UseVisualStyleBackColor = false;
-            // 
-            // updateItemButton
-            // 
-            this.updateItemButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.updateItemButton.Font = new System.Drawing.Font("Impact", 12F);
-            this.updateItemButton.ForeColor = System.Drawing.Color.Snow;
-            this.updateItemButton.Location = new System.Drawing.Point(710, 86);
-            this.updateItemButton.Margin = new System.Windows.Forms.Padding(2);
-            this.updateItemButton.Name = "updateItemButton";
-            this.updateItemButton.Size = new System.Drawing.Size(101, 28);
-            this.updateItemButton.TabIndex = 12;
-            this.updateItemButton.Text = "Update Item";
-            this.updateItemButton.UseVisualStyleBackColor = false;
-            // 
-            // addItemButton
-            // 
-            this.addItemButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.addItemButton.Font = new System.Drawing.Font("Impact", 12F);
-            this.addItemButton.ForeColor = System.Drawing.Color.Snow;
-            this.addItemButton.Location = new System.Drawing.Point(604, 86);
-            this.addItemButton.Margin = new System.Windows.Forms.Padding(2);
-            this.addItemButton.Name = "addItemButton";
-            this.addItemButton.Size = new System.Drawing.Size(101, 28);
-            this.addItemButton.TabIndex = 11;
-            this.addItemButton.Text = "Add Item";
-            this.addItemButton.UseVisualStyleBackColor = false;
-            // 
-            // viewItemButton
-            // 
-            this.viewItemButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.viewItemButton.Font = new System.Drawing.Font("Impact", 12F);
-            this.viewItemButton.ForeColor = System.Drawing.Color.Snow;
-            this.viewItemButton.Location = new System.Drawing.Point(393, 86);
-            this.viewItemButton.Margin = new System.Windows.Forms.Padding(2);
-            this.viewItemButton.Name = "viewItemButton";
-            this.viewItemButton.Size = new System.Drawing.Size(101, 28);
-            this.viewItemButton.TabIndex = 10;
-            this.viewItemButton.Text = "View Item";
-            this.viewItemButton.UseVisualStyleBackColor = false;
-            // 
-            // locateItemButton
-            // 
-            this.locateItemButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.locateItemButton.Font = new System.Drawing.Font("Impact", 12F);
-            this.locateItemButton.ForeColor = System.Drawing.Color.Snow;
-            this.locateItemButton.Location = new System.Drawing.Point(499, 86);
-            this.locateItemButton.Margin = new System.Windows.Forms.Padding(2);
-            this.locateItemButton.Name = "locateItemButton";
-            this.locateItemButton.Size = new System.Drawing.Size(101, 28);
-            this.locateItemButton.TabIndex = 9;
-            this.locateItemButton.Text = "Locate Item";
-            this.locateItemButton.UseVisualStyleBackColor = false;
-            // 
             // activityPaneLabel
             // 
             this.activityPaneLabel.AutoSize = true;
@@ -867,6 +799,75 @@
             this.disconnectButton.UseVisualStyleBackColor = false;
             this.disconnectButton.Click += new System.EventHandler(this.disconnectButton_Click);
             // 
+            // chooseDatabaseActionGroupBox
+            // 
+            this.chooseDatabaseActionGroupBox.Controls.Add(this.deleteItemRadioButton);
+            this.chooseDatabaseActionGroupBox.Controls.Add(this.updateItemRadioButton);
+            this.chooseDatabaseActionGroupBox.Controls.Add(this.addItemRadioButton);
+            this.chooseDatabaseActionGroupBox.Controls.Add(this.locateItemRadioButton);
+            this.chooseDatabaseActionGroupBox.Controls.Add(this.viewItemRadioButton);
+            this.chooseDatabaseActionGroupBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.chooseDatabaseActionGroupBox.Location = new System.Drawing.Point(393, 67);
+            this.chooseDatabaseActionGroupBox.Name = "chooseDatabaseActionGroupBox";
+            this.chooseDatabaseActionGroupBox.Size = new System.Drawing.Size(523, 52);
+            this.chooseDatabaseActionGroupBox.TabIndex = 16;
+            this.chooseDatabaseActionGroupBox.TabStop = false;
+            this.chooseDatabaseActionGroupBox.Text = "Choose Database Action";
+            // 
+            // viewItemRadioButton
+            // 
+            this.viewItemRadioButton.AutoSize = true;
+            this.viewItemRadioButton.Checked = true;
+            this.viewItemRadioButton.Location = new System.Drawing.Point(16, 19);
+            this.viewItemRadioButton.Name = "viewItemRadioButton";
+            this.viewItemRadioButton.Size = new System.Drawing.Size(71, 17);
+            this.viewItemRadioButton.TabIndex = 0;
+            this.viewItemRadioButton.TabStop = true;
+            this.viewItemRadioButton.Text = "View Item";
+            this.viewItemRadioButton.UseVisualStyleBackColor = true;
+            this.viewItemRadioButton.CheckedChanged += new System.EventHandler(this.viewItemRadioButton_CheckedChanged);
+            // 
+            // locateItemRadioButton
+            // 
+            this.locateItemRadioButton.AutoSize = true;
+            this.locateItemRadioButton.Location = new System.Drawing.Point(107, 19);
+            this.locateItemRadioButton.Name = "locateItemRadioButton";
+            this.locateItemRadioButton.Size = new System.Drawing.Size(81, 17);
+            this.locateItemRadioButton.TabIndex = 1;
+            this.locateItemRadioButton.Text = "Locate Item";
+            this.locateItemRadioButton.UseVisualStyleBackColor = true;
+            this.locateItemRadioButton.CheckedChanged += new System.EventHandler(this.locateItemRadioButton_CheckedChanged);
+            // 
+            // addItemRadioButton
+            // 
+            this.addItemRadioButton.AutoSize = true;
+            this.addItemRadioButton.Location = new System.Drawing.Point(200, 19);
+            this.addItemRadioButton.Name = "addItemRadioButton";
+            this.addItemRadioButton.Size = new System.Drawing.Size(67, 17);
+            this.addItemRadioButton.TabIndex = 2;
+            this.addItemRadioButton.Text = "Add Item";
+            this.addItemRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // updateItemRadioButton
+            // 
+            this.updateItemRadioButton.AutoSize = true;
+            this.updateItemRadioButton.Location = new System.Drawing.Point(291, 19);
+            this.updateItemRadioButton.Name = "updateItemRadioButton";
+            this.updateItemRadioButton.Size = new System.Drawing.Size(83, 17);
+            this.updateItemRadioButton.TabIndex = 3;
+            this.updateItemRadioButton.Text = "Update Item";
+            this.updateItemRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // deleteItemRadioButton
+            // 
+            this.deleteItemRadioButton.AutoSize = true;
+            this.deleteItemRadioButton.Location = new System.Drawing.Point(387, 19);
+            this.deleteItemRadioButton.Name = "deleteItemRadioButton";
+            this.deleteItemRadioButton.Size = new System.Drawing.Size(79, 17);
+            this.deleteItemRadioButton.TabIndex = 4;
+            this.deleteItemRadioButton.Text = "Delete Item";
+            this.deleteItemRadioButton.UseVisualStyleBackColor = true;
+            // 
             // mainwindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -907,6 +908,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.mainwindowBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.queriesBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainwindowBindingSource1)).EndInit();
+            this.chooseDatabaseActionGroupBox.ResumeLayout(false);
+            this.chooseDatabaseActionGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -935,11 +938,6 @@
         private System.Windows.Forms.Button disconnectButton;
         private System.Windows.Forms.Label activityPaneLabel;
         private System.Windows.Forms.RichTextBox outputPane;
-        private System.Windows.Forms.Button deleteItemButton;
-        private System.Windows.Forms.Button updateItemButton;
-        private System.Windows.Forms.Button addItemButton;
-        private System.Windows.Forms.Button viewItemButton;
-        private System.Windows.Forms.Button locateItemButton;
         private System.Windows.Forms.CheckBox debugCheckbox;
         private System.Windows.Forms.GroupBox locateItemGroupBox;
         private System.Windows.Forms.ComboBox nameComboBox_LI;
@@ -967,6 +965,12 @@
         private System.Windows.Forms.ComboBox lengthComboBox;
         private System.Windows.Forms.ComboBox gaugeComboBox;
         private System.Windows.Forms.CheckBox includePaymentInfoCheckBox;
+        private System.Windows.Forms.GroupBox chooseDatabaseActionGroupBox;
+        private System.Windows.Forms.RadioButton deleteItemRadioButton;
+        private System.Windows.Forms.RadioButton updateItemRadioButton;
+        private System.Windows.Forms.RadioButton addItemRadioButton;
+        private System.Windows.Forms.RadioButton locateItemRadioButton;
+        private System.Windows.Forms.RadioButton viewItemRadioButton;
     }
 }
 

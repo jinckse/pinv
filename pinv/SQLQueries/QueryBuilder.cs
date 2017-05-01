@@ -60,8 +60,19 @@ namespace pinv.SQLQueries
         /// <summary>
         /// View an item in the inventory system based on user query
         /// </summary>
-        public void BuildViewItemQuery()
+        public string BuildViewItemQuery()
         {
+            string query;
+
+            // Connect query parts
+            query = SelectStr + " "
+                + FromStr + " "
+                + JoinOpsStr + " "
+                + WhereStr + " "
+                + AggregateOpsStr;
+
+            // Return result
+            return query;
 
         }
 

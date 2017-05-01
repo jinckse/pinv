@@ -551,10 +551,40 @@ namespace PINV
                 qb.AggregateOpsStr = "group by IType having Amount > 0 order by Name desc";
             }
 
+            /// Locate an Item
+            if (locateItemRadioButton.Checked)
+            {
+                /// Item is a component
+                if(componentRadioButton.Checked)
+                {
+                    qb.SelectStr = "select OLabel as Organizer, DNo, Cmpt";
+                    qb.JoinOpsStr += " join STORED_IN on INum=INo join DRAWER on SISNum=DSNum join STORAGE_AREA on StoNo=SISNum";
+                    qb.AggregateOpsStr = "";
+                }
+                /// Item is a tool
+                else if (toolRadioButton.Checked)
+                {
+                    qb.SelectStr = "select PLabel as Pegboard, HNo";
+                    qb.JoinOpsStr += " join STORED_IN on INum=INo join HOOK on SISNum=HSNum join STORAGE_AREA on StoNo=SISNum";
+                    qb.AggregateOpsStr = "";
+                }
+                /// Item is a large component
+                else if (lComponentRadioButton.Checked)
+                {
+                    qb.SelectStr = "select BLabel as Bin";
+                    qb.JoinOpsStr += " join STORED_IN on INum=INo join STORAGE_AREA on StoNo=SISNum";
+                    qb.AggregateOpsStr = "";
+                }
+                else
+                {
+                    /// Should never get here
+                }
+            }
+
             /// Send query to database
             var inv = Inventory.Instance();
             List<string> output = new List<string>();
-            string query = qb.BuildLocateItemQuery();
+            string query = qb.BuildViewItemQuery();
 
             try
             {
@@ -681,6 +711,18 @@ namespace PINV
                 priceComboBox_LI.Show();
                 purchaseDateComboBox_LI.Show();
             }
+        }
+
+        private void locateItemRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            /// Hide Payment Info checkbox when this action is selected
+            includePaymentInfoCheckBox.Hide();
+        }
+
+        private void viewItemRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            /// Show Payment Info checkbox when this action is selected
+            includePaymentInfoCheckBox.Show();
         }
     }
 }
