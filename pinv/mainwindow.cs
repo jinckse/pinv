@@ -793,5 +793,64 @@ namespace PINV
             qb.SelectStr = oldSelectStr;
             qb.AggregateOpsStr = oldAggStr;
         }
+
+        private void calculateTotalQuantityButton_Click(object sender, EventArgs e)
+        {
+            /// Submit total quantity query and show result in textbox
+
+            /// Save current values
+            string oldSelectStr = qb.SelectStr;
+            string oldAggStr = qb.AggregateOpsStr;
+
+            /// Make necessary changes for valid response
+            qb.SelectStr = "select sum(Amount)";
+            qb.AggregateOpsStr = "";
+
+            var inv = Inventory.Instance();
+            List<string> output = new List<string>();
+            string query = qb.BuildViewItemQuery();
+
+            try
+            {
+                output = inv.RetrieveRecords(dbCon, query);
+
+                /// Populate and show results form
+                ViewItemResults irForm = new ViewItemResults();
+
+                for (int i = 0; i < output.Count; i++)
+                {
+                    /// Handle null results from database
+                    if (output[i] == "")
+                    {
+                        irForm.viewItemResultsRichTextBox.AppendText("N/A" + ",");
+                    }
+                    else
+                    {
+                        irForm.viewItemResultsRichTextBox.AppendText(output[i] + ",");
+                    }
+                }
+
+                /// Show total quantity of items returned
+                try
+                {
+                    totalQuantityTextBox.ForeColor = Color.Black;
+                    totalQuantityTextBox.Text = output[1];
+                }
+                catch (Exception ex)
+                {
+                    totalQuantityTextBox.Text = "Error";
+                    totalQuantityTextBox.ForeColor = Color.Red;
+                }
+            }
+            catch (NullReferenceException ex)
+            {
+                outputPane.AppendText("\nERROR: A problem occurred reading the database");
+                outputPane.AppendText("\nAre you connected?");
+            }
+
+            /// Reinstate original query
+            qb.SelectStr = oldSelectStr;
+            qb.AggregateOpsStr = oldAggStr;
+        }
     }
 }

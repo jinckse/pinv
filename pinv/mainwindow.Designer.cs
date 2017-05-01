@@ -39,6 +39,12 @@
             this.locateItemRadioButton = new System.Windows.Forms.RadioButton();
             this.viewItemRadioButton = new System.Windows.Forms.RadioButton();
             this.locateItemGroupBox = new System.Windows.Forms.GroupBox();
+            this.calculateTotalQuantityButton = new System.Windows.Forms.Button();
+            this.calculateTotalPriceButton = new System.Windows.Forms.Button();
+            this.totalQuantityLabel = new System.Windows.Forms.Label();
+            this.totalPriceLabel = new System.Windows.Forms.Label();
+            this.totalQuantityTextBox = new System.Windows.Forms.TextBox();
+            this.totalPriceTextBox = new System.Windows.Forms.TextBox();
             this.includePaymentInfoCheckBox = new System.Windows.Forms.CheckBox();
             this.generateReportButton = new System.Windows.Forms.Button();
             this.sortGroupBox = new System.Windows.Forms.GroupBox();
@@ -84,9 +90,6 @@
             this.dbPassTextBox = new System.Windows.Forms.MaskedTextBox();
             this.connectButton = new System.Windows.Forms.Button();
             this.disconnectButton = new System.Windows.Forms.Button();
-            this.totalPriceTextBox = new System.Windows.Forms.TextBox();
-            this.totalPriceLabel = new System.Windows.Forms.Label();
-            this.calculateTotalPriceButton = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.statusLog.SuspendLayout();
             this.chooseDatabaseActionGroupBox.SuspendLayout();
@@ -211,8 +214,11 @@
             // 
             // locateItemGroupBox
             // 
+            this.locateItemGroupBox.Controls.Add(this.calculateTotalQuantityButton);
             this.locateItemGroupBox.Controls.Add(this.calculateTotalPriceButton);
+            this.locateItemGroupBox.Controls.Add(this.totalQuantityLabel);
             this.locateItemGroupBox.Controls.Add(this.totalPriceLabel);
+            this.locateItemGroupBox.Controls.Add(this.totalQuantityTextBox);
             this.locateItemGroupBox.Controls.Add(this.totalPriceTextBox);
             this.locateItemGroupBox.Controls.Add(this.includePaymentInfoCheckBox);
             this.locateItemGroupBox.Controls.Add(this.generateReportButton);
@@ -234,10 +240,64 @@
             this.locateItemGroupBox.TabStop = false;
             this.locateItemGroupBox.Text = "View an Item in the System";
             // 
+            // calculateTotalQuantityButton
+            // 
+            this.calculateTotalQuantityButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.calculateTotalQuantityButton.Location = new System.Drawing.Point(317, 181);
+            this.calculateTotalQuantityButton.Name = "calculateTotalQuantityButton";
+            this.calculateTotalQuantityButton.Size = new System.Drawing.Size(75, 23);
+            this.calculateTotalQuantityButton.TabIndex = 17;
+            this.calculateTotalQuantityButton.Text = "Calculate";
+            this.calculateTotalQuantityButton.UseVisualStyleBackColor = true;
+            this.calculateTotalQuantityButton.Click += new System.EventHandler(this.calculateTotalQuantityButton_Click);
+            // 
+            // calculateTotalPriceButton
+            // 
+            this.calculateTotalPriceButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.calculateTotalPriceButton.Location = new System.Drawing.Point(317, 205);
+            this.calculateTotalPriceButton.Name = "calculateTotalPriceButton";
+            this.calculateTotalPriceButton.Size = new System.Drawing.Size(75, 23);
+            this.calculateTotalPriceButton.TabIndex = 14;
+            this.calculateTotalPriceButton.Text = "Calculate";
+            this.calculateTotalPriceButton.UseVisualStyleBackColor = true;
+            this.calculateTotalPriceButton.Click += new System.EventHandler(this.calculateTotalPriceButton_Click);
+            // 
+            // totalQuantityLabel
+            // 
+            this.totalQuantityLabel.AutoSize = true;
+            this.totalQuantityLabel.Location = new System.Drawing.Point(166, 186);
+            this.totalQuantityLabel.Name = "totalQuantityLabel";
+            this.totalQuantityLabel.Size = new System.Drawing.Size(73, 13);
+            this.totalQuantityLabel.TabIndex = 16;
+            this.totalQuantityLabel.Text = "Total Quantity";
+            // 
+            // totalPriceLabel
+            // 
+            this.totalPriceLabel.AutoSize = true;
+            this.totalPriceLabel.Location = new System.Drawing.Point(166, 210);
+            this.totalPriceLabel.Name = "totalPriceLabel";
+            this.totalPriceLabel.Size = new System.Drawing.Size(58, 13);
+            this.totalPriceLabel.TabIndex = 13;
+            this.totalPriceLabel.Text = "Total Price";
+            // 
+            // totalQuantityTextBox
+            // 
+            this.totalQuantityTextBox.Location = new System.Drawing.Point(248, 183);
+            this.totalQuantityTextBox.Name = "totalQuantityTextBox";
+            this.totalQuantityTextBox.Size = new System.Drawing.Size(63, 20);
+            this.totalQuantityTextBox.TabIndex = 15;
+            // 
+            // totalPriceTextBox
+            // 
+            this.totalPriceTextBox.Location = new System.Drawing.Point(248, 207);
+            this.totalPriceTextBox.Name = "totalPriceTextBox";
+            this.totalPriceTextBox.Size = new System.Drawing.Size(63, 20);
+            this.totalPriceTextBox.TabIndex = 12;
+            // 
             // includePaymentInfoCheckBox
             // 
             this.includePaymentInfoCheckBox.AutoSize = true;
-            this.includePaymentInfoCheckBox.Location = new System.Drawing.Point(169, 227);
+            this.includePaymentInfoCheckBox.Location = new System.Drawing.Point(169, 228);
             this.includePaymentInfoCheckBox.Name = "includePaymentInfoCheckBox";
             this.includePaymentInfoCheckBox.Size = new System.Drawing.Size(160, 17);
             this.includePaymentInfoCheckBox.TabIndex = 11;
@@ -874,33 +934,6 @@
             this.disconnectButton.UseVisualStyleBackColor = false;
             this.disconnectButton.Click += new System.EventHandler(this.disconnectButton_Click);
             // 
-            // totalPriceTextBox
-            // 
-            this.totalPriceTextBox.Location = new System.Drawing.Point(233, 204);
-            this.totalPriceTextBox.Name = "totalPriceTextBox";
-            this.totalPriceTextBox.Size = new System.Drawing.Size(63, 20);
-            this.totalPriceTextBox.TabIndex = 12;
-            // 
-            // totalPriceLabel
-            // 
-            this.totalPriceLabel.AutoSize = true;
-            this.totalPriceLabel.Location = new System.Drawing.Point(169, 207);
-            this.totalPriceLabel.Name = "totalPriceLabel";
-            this.totalPriceLabel.Size = new System.Drawing.Size(58, 13);
-            this.totalPriceLabel.TabIndex = 13;
-            this.totalPriceLabel.Text = "Total Price";
-            // 
-            // calculateTotalPriceButton
-            // 
-            this.calculateTotalPriceButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.calculateTotalPriceButton.Location = new System.Drawing.Point(302, 202);
-            this.calculateTotalPriceButton.Name = "calculateTotalPriceButton";
-            this.calculateTotalPriceButton.Size = new System.Drawing.Size(75, 23);
-            this.calculateTotalPriceButton.TabIndex = 14;
-            this.calculateTotalPriceButton.Text = "Calculate";
-            this.calculateTotalPriceButton.UseVisualStyleBackColor = true;
-            this.calculateTotalPriceButton.Click += new System.EventHandler(this.calculateTotalPriceButton_Click);
-            // 
             // mainwindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1007,6 +1040,9 @@
         private System.Windows.Forms.Button calculateTotalPriceButton;
         private System.Windows.Forms.Label totalPriceLabel;
         private System.Windows.Forms.TextBox totalPriceTextBox;
+        private System.Windows.Forms.Button calculateTotalQuantityButton;
+        private System.Windows.Forms.Label totalQuantityLabel;
+        private System.Windows.Forms.TextBox totalQuantityTextBox;
     }
 }
 
