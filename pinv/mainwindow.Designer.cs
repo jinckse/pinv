@@ -231,7 +231,8 @@
             "2015",
             "2016",
             "2017",
-            "Before 2012"});
+            "Before 2012",
+            "Select Item Purchase Date"});
             this.purchaseDateComboBox_LI.Location = new System.Drawing.Point(6, 77);
             this.purchaseDateComboBox_LI.Name = "purchaseDateComboBox_LI";
             this.purchaseDateComboBox_LI.Size = new System.Drawing.Size(154, 21);
@@ -247,7 +248,8 @@
             "$1.00 - $5.00",
             "$5.00 - $10.00",
             "< $1.00",
-            "> 10.00"});
+            "> $10.00",
+            "Select Item Price"});
             this.priceComboBox_LI.Location = new System.Drawing.Point(387, 50);
             this.priceComboBox_LI.Name = "priceComboBox_LI";
             this.priceComboBox_LI.Size = new System.Drawing.Size(121, 21);
@@ -264,7 +266,8 @@
             "Fry\'s Electronics",
             "Harbor Freight",
             "Jameco",
-            "Private"});
+            "Private",
+            "Select Item Supplier"});
             this.supplierComboBox_LI.Location = new System.Drawing.Point(260, 50);
             this.supplierComboBox_LI.Name = "supplierComboBox_LI";
             this.supplierComboBox_LI.Size = new System.Drawing.Size(121, 21);
@@ -320,6 +323,7 @@
             "Manual",
             "Module",
             "Rosin-Core",
+            "Select Item Type",
             "Stranded-Core",
             "Through-Hole",
             "Type-A",
@@ -342,6 +346,7 @@
             "Hammer",
             "Multimeter",
             "Resistor",
+            "Select Item Name",
             "Solder",
             "TFT Display",
             "Transistor",
@@ -372,6 +377,7 @@
             // 
             this.amperageComboBox.FormattingEnabled = true;
             this.amperageComboBox.Items.AddRange(new object[] {
+            "Select Amperage (A)",
             "0.25",
             "0.5",
             "1.25",
@@ -386,6 +392,7 @@
             // 
             this.voltageComboBox.FormattingEnabled = true;
             this.voltageComboBox.Items.AddRange(new object[] {
+            "Select Voltage (V)",
             "5",
             "6",
             "9",
@@ -401,6 +408,7 @@
             // 
             this.capacitanceComboBox.FormattingEnabled = true;
             this.capacitanceComboBox.Items.AddRange(new object[] {
+            "Select Capacitance",
             "1",
             "100",
             "0.1",
@@ -416,6 +424,7 @@
             // 
             this.resistanceComboBox.FormattingEnabled = true;
             this.resistanceComboBox.Items.AddRange(new object[] {
+            "Select Resistance",
             "1",
             "1000",
             "2",
@@ -459,6 +468,7 @@
             // 
             this.protocolComboBox.FormattingEnabled = true;
             this.protocolComboBox.Items.AddRange(new object[] {
+            "Select Protocol",
             "USB ",
             "I2C",
             "SPI",
@@ -473,6 +483,7 @@
             // 
             this.lengthComboBox.FormattingEnabled = true;
             this.lengthComboBox.Items.AddRange(new object[] {
+            "Select Length (ft)",
             "1",
             "2",
             "3",
@@ -497,6 +508,7 @@
             // 
             this.gaugeComboBox.FormattingEnabled = true;
             this.gaugeComboBox.Items.AddRange(new object[] {
+            "Select Gauge (AWG)",
             "10",
             "11",
             "12",
@@ -539,6 +551,7 @@
             // 
             this.statusComboBox.FormattingEnabled = true;
             this.statusComboBox.Items.AddRange(new object[] {
+            "Select Status",
             "Availible",
             "Repair",
             "Junked"});
@@ -552,6 +565,7 @@
             // 
             this.cDateComboBox.FormattingEnabled = true;
             this.cDateComboBox.Items.AddRange(new object[] {
+            "Select Calibration Date",
             "< 1 Month",
             "> 1 Month",
             "> 6 Months",

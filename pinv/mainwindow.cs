@@ -389,7 +389,7 @@ namespace PINV
             }
 
             /// Tool radio button is selected
-            if (componentRadioButton.Checked)
+            if (toolRadioButton.Checked)
             {
                 if (!cDateComboBox.Text.Contains("Select"))
                 {
@@ -427,7 +427,13 @@ namespace PINV
                 && typeComboBox_LI.Text.Contains("Select")
                 && supplierComboBox_LI.Text.Contains("Select")
                 && priceComboBox_LI.Text.Contains("Select")
-                && purchaseDateComboBox_LI.Text.Contains("Select"))
+                && purchaseDateComboBox_LI.Text.Contains("Select")
+                && resistanceComboBox.Text.Contains("Select")
+                && capacitanceComboBox.Text.Contains("Select")
+                && voltageComboBox.Text.Contains("Select")
+                && amperageComboBox.Text.Contains("Select")
+                && cDateComboBox.Text.Contains("Select")
+                && statusComboBox.Text.Contains("Select"))
             {
                 qb.WhereStr = "";
             }
