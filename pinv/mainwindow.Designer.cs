@@ -201,6 +201,7 @@
             // descendingRadioButton
             // 
             this.descendingRadioButton.AutoSize = true;
+            this.descendingRadioButton.Checked = true;
             this.descendingRadioButton.Location = new System.Drawing.Point(10, 32);
             this.descendingRadioButton.Name = "descendingRadioButton";
             this.descendingRadioButton.Size = new System.Drawing.Size(82, 17);

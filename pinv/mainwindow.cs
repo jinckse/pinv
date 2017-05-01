@@ -445,6 +445,16 @@ namespace PINV
                 qb.JoinOpsStr = "join PURCHASE_INFO on (INum = INo)"; 
             }
 
+            /// Sort results alphabetically by name
+            if (ascendingRadioButton.Checked)
+            {
+                qb.AggregateOpsStr = "group by IType having Amount > 0 order by Name asc";
+            }
+            else
+            {
+                qb.AggregateOpsStr = "group by IType having Amount > 0 order by Name desc";
+            }
+
             /// Send query to database
             var inv = Inventory.Instance();
             List<string> output = new List<string>();
