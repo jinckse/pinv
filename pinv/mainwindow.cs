@@ -207,6 +207,16 @@ namespace PINV
             qb.SelectStr = "select *";
             qb.WhereStr = "where";
 
+            /// Sort results alphabetically by name
+            if (ascendingRadioButton.Checked)
+            {
+                qb.AggregateOpsStr = "group by IType having Amount > 0 order by Name asc";
+            }
+            else
+            {
+                qb.AggregateOpsStr = "group by IType having Amount > 0 order by Name desc";
+            }
+
             /// We always use these items when viewing items
             if (!nameComboBox_LI.Text.Contains("Select"))
             {
@@ -252,6 +262,16 @@ namespace PINV
 
             if (!priceComboBox_LI.Text.Contains("Select"))
             {
+                /// Sort results numerically by price
+                if (ascendingRadioButton.Checked)
+                {
+                    qb.AggregateOpsStr = "group by IType having Amount > 0 order by Price asc";
+                }
+                else
+                {
+                    qb.AggregateOpsStr = "group by IType having Amount > 0 order by Price desc";
+                }
+
                 /// < $1.00
                 if (priceComboBox_LI.Text.Contains("< $1.00"))
                 {
@@ -545,16 +565,6 @@ namespace PINV
                 qb.JoinOpsStr = "";
             }
 
-            /// Sort results alphabetically by name
-            if (ascendingRadioButton.Checked)
-            {
-                qb.AggregateOpsStr = "group by IType having Amount > 0 order by Name asc";
-            }
-            else
-            {
-                qb.AggregateOpsStr = "group by IType having Amount > 0 order by Name desc";
-            }
-
             /// Locate an Item
             if (locateItemRadioButton.Checked)
             {
@@ -634,7 +644,6 @@ namespace PINV
             }
             catch (NullReferenceException ex)
             {
-                outputPane.ForeColor = Color.Red;
                 outputPane.AppendText("\nERROR: A problem occurred reading the database");
                 outputPane.AppendText("\nAre you connected?");
             }
