@@ -82,11 +82,6 @@ namespace PINV.SQLQueries
             "JOIN STORED_IN ON INum = INo\n" +
             "WHERE Name = 'Resistor'";
 
-        /// <summary>
-        /// List of all example queries
-        /// </summary>
-        public static readonly List<string> queryList = new List<string>{ q1, q2, q3, q4, q5, q6 };
-
         #endregion fields
     }
 }

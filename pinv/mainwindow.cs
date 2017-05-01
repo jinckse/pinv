@@ -196,7 +196,11 @@ namespace PINV
 
         private void disconnectButton_Click(object sender, EventArgs e)
         {
+            dbCon.Close();
 
+            outputPane.AppendText("\nDisconnected from database: " + dbCon.DatabaseName);
+            connectionToolStripStatusLabel.Text = "MYSQL Connection Status: Disconnected";
+            connectionToolStripStatusLabel.ForeColor = Color.Red;
         }
 
         private void generateReportButton_Click(object sender, EventArgs e)

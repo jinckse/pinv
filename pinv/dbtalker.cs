@@ -121,7 +121,15 @@ namespace PINV
         /// </summary>
         public void Close()
         {
-            _connection.Close();
+            try
+            {
+                _connection.Close();
+                _connection = null;
+            }
+            catch (NullReferenceException ex)
+            {
+                Console.WriteLine("ERROR: Not connected");
+            }
         } 
     }
 }
