@@ -249,6 +249,7 @@
             this.calculateTotalQuantityButton.TabIndex = 17;
             this.calculateTotalQuantityButton.Text = "Calculate";
             this.calculateTotalQuantityButton.UseVisualStyleBackColor = true;
+            this.calculateTotalQuantityButton.Click += new System.EventHandler(this.calculateTotalQuantityButton_Click);
             // 
             // calculateTotalPriceButton
             // 
@@ -381,8 +382,6 @@
             "$5.00 - $10.00",
             "< $1.00",
             "> $10.00",
-            "MAX",
-            "MIN",
             "Select Item Price"});
             this.priceComboBox_LI.Location = new System.Drawing.Point(387, 50);
             this.priceComboBox_LI.Name = "priceComboBox_LI";

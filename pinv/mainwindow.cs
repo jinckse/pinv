@@ -572,21 +572,21 @@ namespace PINV
                 if(componentRadioButton.Checked)
                 {
                     qb.SelectStr = "select OLabel as Organizer, DNo, Cmpt";
-                    qb.JoinOpsStr += " join STORED_IN on INum=INo join DRAWER on SISNum=DSNum join STORAGE_AREA on StoNo=SISNum";
+                    qb.JoinOpsStr += " join STORED_IN on STORED_IN.INum=INo join DRAWER on SISNum=DSNum join STORAGE_AREA on StoNo=SISNum";
                     qb.AggregateOpsStr = "";
                 }
                 /// Item is a tool
                 else if (toolRadioButton.Checked)
                 {
                     qb.SelectStr = "select PLabel as Pegboard, HNo";
-                    qb.JoinOpsStr += " join STORED_IN on INum=INo join HOOK on SISNum=HSNum join STORAGE_AREA on StoNo=SISNum";
+                    qb.JoinOpsStr += " join STORED_IN on STORED_IN.INum=INo join HOOK on SISNum=HSNum join STORAGE_AREA on StoNo=SISNum";
                     qb.AggregateOpsStr = "";
                 }
                 /// Item is a large component
                 else if (lComponentRadioButton.Checked)
                 {
                     qb.SelectStr = "select BLabel as Bin";
-                    qb.JoinOpsStr += " join STORED_IN on INum=INo join STORAGE_AREA on StoNo=SISNum";
+                    qb.JoinOpsStr += " join STORED_IN on STORED_IN.INum=INo join STORAGE_AREA on BLabel=SISNum";
                     qb.AggregateOpsStr = "";
                 }
                 else
@@ -609,16 +609,37 @@ namespace PINV
 
                 for (int i = 0; i < output.Count; i++)
                 {
-                    if (includePaymentInfoCheckBox.Checked)
+                    if (includePaymentInfoCheckBox.Checked && viewItemRadioButton.Checked)
                     {
                         if ((i % 21) == 0 && i != 0)
                         {
                             irForm.viewItemResultsRichTextBox.AppendText("\n");
                         }
                     }
-                    else
+                    else if (!includePaymentInfoCheckBox.Checked && viewItemRadioButton.Checked)
                     {
                         if ((i % 17) == 0 && i != 0)
+                        {
+                            irForm.viewItemResultsRichTextBox.AppendText("\n");
+                        }
+                    }
+                    else if (locateItemRadioButton.Checked && componentRadioButton.Checked)
+                    {
+                        if ((i % 3) == 0 && i != 0)
+                        {
+                            irForm.viewItemResultsRichTextBox.AppendText("\n");
+                        }
+                    }
+                    else if (locateItemRadioButton.Checked && toolRadioButton.Checked)
+                    {
+                        if ((i % 2) == 0 && i != 0)
+                        {
+                            irForm.viewItemResultsRichTextBox.AppendText("\n");
+                        }
+                    }
+                    else if (locateItemRadioButton.Checked && lComponentRadioButton.Checked)
+                    {
+                        if ((i % 1) == 0 && i != 0)
                         {
                             irForm.viewItemResultsRichTextBox.AppendText("\n");
                         }
@@ -635,10 +656,6 @@ namespace PINV
                     }
                 }
 
-                /// Show total price of items returned
-                                
-
-                /// Show total Quantity of items returned
                 //output.ForEach(irForm.viewItemResultsRichTextBox.AppendText);
                 irForm.Show();
             }
@@ -734,14 +751,12 @@ namespace PINV
 
         private void locateItemRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            /// Hide Payment Info checkbox when this action is selected
-            includePaymentInfoCheckBox.Hide();
+
         }
 
         private void viewItemRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            /// Show Payment Info checkbox when this action is selected
-            includePaymentInfoCheckBox.Show();
+
         }
 
         private void calculateTotalPriceButton_Click(object sender, EventArgs e)
@@ -860,6 +875,7 @@ namespace PINV
             /// Reinstate original query
             qb.SelectStr = oldSelectStr;
             qb.AggregateOpsStr = oldAggStr;
+
         }
     }
 }
