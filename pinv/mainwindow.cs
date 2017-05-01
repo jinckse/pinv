@@ -392,6 +392,20 @@ namespace PINV
                         firstWhereEntry = false;
                     }
                 }
+                /// Before 2017
+                else if (purchaseDateComboBox_LI.Text.Contains("Before 2017"))
+                {
+                    if (!firstWhereEntry)
+                    {
+                        qb.WhereStr += " and";
+                        qb.WhereStr += (" year(PDate) < 2017");
+                    }
+                    else
+                    {
+                        qb.WhereStr += (" year(PDate) < 2017");
+                        firstWhereEntry = false;
+                    }
+                }
                 else
                 {
 

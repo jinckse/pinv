@@ -365,6 +365,7 @@
             "2016",
             "2017",
             "Before 2012",
+            "Before 2017",
             "Select Item Purchase Date"});
             this.purchaseDateComboBox_LI.Location = new System.Drawing.Point(6, 77);
             this.purchaseDateComboBox_LI.Name = "purchaseDateComboBox_LI";

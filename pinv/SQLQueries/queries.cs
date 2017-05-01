@@ -19,33 +19,32 @@ namespace PINV.SQLQueries
             "INNER JOIN PURCHASE_INFO ON INum=INo\n" +
             "WHERE CFlag=1 AND NAME='Resistor' AND Power=0.25";
 
+        /// <summary>
+        /// What is everything I have stored in a bin, purchased before 2017?
+        /// </summary>
+        public static readonly string q2 = "SELECT INo, Name, IType, Amount, Protocol, PDate\n" +
+            "FROM ITEM\n" +
+            "JOIN PURCHASE_INFO ON INum = INo\n" +
+            "WHERE INo IN (\n" +
+            "\t(SELECT INum\n" +
+            "\tFROM STORAGE_AREA\n" +
+            "\tJOIN STORED_IN ON (STORAGE_AREA.BLabel = STORED_IN.SISNum)\n" +
+            "\tWHERE BFlag=1)\n" +
+            ")\n" +
+            "GROUP BY INo\n" +
+            "HAVING year(PDate) < 2017\n" +
+            "ORDER BY INo ASC";
 
         /// <summary>
-        /// 
+        /// Do I have any three-foot USB cables, and when did I purchase them?
         /// </summary>
-        public static readonly string q2 = "SELECT INo, Name, IType, Amount, Length, Protocol, PDate\n" +
+        public static readonly string q3 = "SELECT INo, Name, IType, Amount, Length, Protocol, PDate\n" +
             "FROM ITEM\n" +
             "JOIN PURCHASE_INFO ON INum=INo\n" +
             "WHERE LCFlag=1 AND Name='Cable' AND Length=3 AND Protocol='USB'\n" +
             "GROUP BY INo\n" +
             "HAVING Amount > 0\n" +
             "ORDER BY PDate";
-
-        /// <summary>
-        /// What is everything I have stored in a bin, purchased before 2017?
-        /// </summary>
-        public static readonly string q3 = "SELECT INo, Name, IType, Amount, Protocol, PDate\n" +
-            "FROM ITEM\n" +
-            "JOIN PURCHASE_INFO ON INum = INo\n" +
-            "WHERE INo IN (\n" +
-            "\t(SELECT INum\n" +
-            "\tFROM STORAGE_AREA\n" +
-            "\tJOIN STORED_IN ON (STORAGE_AREA.StoNo = STORED_IN.SISNum)\n" +
-            "\tWHERE BFlag=1)\n" +
-            ")\n" +
-            "GROUP BY INo\n" +
-            "HAVING PDate < '2017-01-10'\n" +
-            "ORDER BY INo ASC";
 
         /// <summary>
         /// Where can I find a 3 foot USB type-C calbe?
