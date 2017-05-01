@@ -463,15 +463,65 @@ namespace PINV
             {
                 if (!cDateComboBox.Text.Contains("Select"))
                 {
-                    if (!firstWhereEntry)
+                    /// Less than 1 month
+                    if (cDateComboBox.Text.Contains("< 1 Month"))
                     {
-                        qb.WhereStr += " and";
-                        qb.WhereStr += (" CalibrationDate='" + (cDateComboBox.Text + "'"));
+                        if (!firstWhereEntry)
+                        {
+                            qb.WhereStr += " and";
+                            qb.WhereStr += (" CalDate > NOW() - interval 1 month");
+                        }
+                        else
+                        {
+                            qb.WhereStr += (" CalDate > NOW() - interval 1 month");
+                            firstWhereEntry = false;
+                        }
+                    }
+                    /// Greater than 1 months
+                    else if (cDateComboBox.Text.Contains("> 1 Month"))
+                    {
+                        if (!firstWhereEntry)
+                        {
+                            qb.WhereStr += " and";
+                            qb.WhereStr += (" CalDate < NOW() - interval 1 month");
+                        }
+                        else
+                        {
+                            qb.WhereStr += (" CalDate < NOW() - interval 1 month");
+                            firstWhereEntry = false;
+                        }
+                    }
+                    /// > 6 months
+                    else if (cDateComboBox.Text.Contains("> 6 Months"))
+                    {
+                        if (!firstWhereEntry)
+                        {
+                            qb.WhereStr += " and";
+                            qb.WhereStr += (" CalDate < NOW() - interval 6 month");
+                        }
+                        else
+                        {
+                            qb.WhereStr += (" CalDate < NOW() - interval 6 month");
+                            firstWhereEntry = false;
+                        }
+                    }
+                    /// > 1 year
+                    else if (cDateComboBox.Text.Contains("> 1 Year"))
+                    {
+                        if (!firstWhereEntry)
+                        {
+                            qb.WhereStr += " and";
+                            qb.WhereStr += (" CalDate < NOW() - interval 1 year");
+                        }
+                        else
+                        {
+                            qb.WhereStr += (" CalDate < NOW() - interval 1 year");
+                            firstWhereEntry = false;
+                        }
                     }
                     else
                     {
-                        qb.WhereStr += (" CalibrationDate='" + (cDateComboBox.Text + "'"));
-                        firstWhereEntry = false;
+                        /// Should never get here
                     }
                 }
 
@@ -643,6 +693,10 @@ namespace PINV
                         {
                             irForm.viewItemResultsRichTextBox.AppendText("\n");
                         }
+                    }
+                    else
+                    {
+                        /// Should never get here
                     }
                     
                     /// Handle null results from database
