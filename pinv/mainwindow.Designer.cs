@@ -75,10 +75,6 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.submitOutput = new System.Windows.Forms.Button();
             this.outputPane = new System.Windows.Forms.RichTextBox();
-            this.queriesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.mainwindowBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.queriesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.mainwindowBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.PINVLabel = new System.Windows.Forms.Label();
             this.dbNameLabel = new System.Windows.Forms.Label();
             this.dbIPLabel = new System.Windows.Forms.Label();
@@ -90,6 +86,10 @@
             this.dbPassTextBox = new System.Windows.Forms.MaskedTextBox();
             this.connectButton = new System.Windows.Forms.Button();
             this.disconnectButton = new System.Windows.Forms.Button();
+            this.queriesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mainwindowBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.queriesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.mainwindowBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.statusStrip1.SuspendLayout();
             this.statusLog.SuspendLayout();
             this.chooseDatabaseActionGroupBox.SuspendLayout();
@@ -457,7 +457,6 @@
             "Module",
             "Rosin-Core",
             "Select Item Type",
-            "Select Item Type",
             "Stranded-Core",
             "Through-Hole",
             "Type-A",
@@ -789,22 +788,6 @@
             this.outputPane.ZoomFactor = 1.2F;
             this.outputPane.TextChanged += new System.EventHandler(this.outputPane_TextChanged);
             // 
-            // queriesBindingSource
-            // 
-            this.queriesBindingSource.DataSource = typeof(PINV.SQLQueries.Queries);
-            // 
-            // mainwindowBindingSource
-            // 
-            this.mainwindowBindingSource.DataSource = typeof(PINV.mainwindow);
-            // 
-            // queriesBindingSource1
-            // 
-            this.queriesBindingSource1.DataSource = typeof(PINV.SQLQueries.Queries);
-            // 
-            // mainwindowBindingSource1
-            // 
-            this.mainwindowBindingSource1.DataSource = typeof(PINV.mainwindow);
-            // 
             // PINVLabel
             // 
             this.PINVLabel.AutoSize = true;
@@ -938,6 +921,22 @@
             this.disconnectButton.Text = "DISCONNECT";
             this.disconnectButton.UseVisualStyleBackColor = false;
             this.disconnectButton.Click += new System.EventHandler(this.disconnectButton_Click);
+            // 
+            // queriesBindingSource
+            // 
+            this.queriesBindingSource.DataSource = typeof(PINV.SQLQueries.Queries);
+            // 
+            // mainwindowBindingSource
+            // 
+            this.mainwindowBindingSource.DataSource = typeof(PINV.mainwindow);
+            // 
+            // queriesBindingSource1
+            // 
+            this.queriesBindingSource1.DataSource = typeof(PINV.SQLQueries.Queries);
+            // 
+            // mainwindowBindingSource1
+            // 
+            this.mainwindowBindingSource1.DataSource = typeof(PINV.mainwindow);
             // 
             // mainwindow
             // 

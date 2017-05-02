@@ -47,7 +47,7 @@
             this.ClientSize = new System.Drawing.Size(899, 375);
             this.Controls.Add(this.viewItemResultsRichTextBox);
             this.Name = "ViewItemResults";
-            this.Text = "View Inventory Item";
+            this.Text = "Inventory Report";
             this.ResumeLayout(false);
 
         }
