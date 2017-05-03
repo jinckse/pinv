@@ -90,6 +90,7 @@
             this.mainwindowBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.queriesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.mainwindowBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.powerComboBox = new System.Windows.Forms.ComboBox();
             this.statusStrip1.SuspendLayout();
             this.statusLog.SuspendLayout();
             this.chooseDatabaseActionGroupBox.SuspendLayout();
@@ -364,7 +365,7 @@
             "2015",
             "2016",
             "2017",
-            "Before 2012",
+            "Before 2017",
             "Select Item Purchase Date"});
             this.purchaseDateComboBox_LI.Location = new System.Drawing.Point(6, 77);
             this.purchaseDateComboBox_LI.Name = "purchaseDateComboBox_LI";
@@ -497,6 +498,7 @@
             this.componentAttrGroupBox.Controls.Add(this.voltageComboBox);
             this.componentAttrGroupBox.Controls.Add(this.capacitanceComboBox);
             this.componentAttrGroupBox.Controls.Add(this.resistanceComboBox);
+            this.componentAttrGroupBox.Controls.Add(this.powerComboBox);
             this.componentAttrGroupBox.Controls.Add(this.lComponentAttrGroupBox);
             this.componentAttrGroupBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.componentAttrGroupBox.Location = new System.Drawing.Point(6, 104);
@@ -513,7 +515,6 @@
             "Select Amperage (A)",
             "0.25",
             "0.5",
-            "1.25",
             "1"});
             this.amperageComboBox.Location = new System.Drawing.Point(387, 20);
             this.amperageComboBox.Name = "amperageComboBox";
@@ -531,7 +532,7 @@
             "9",
             "12",
             "20"});
-            this.voltageComboBox.Location = new System.Drawing.Point(260, 19);
+            this.voltageComboBox.Location = new System.Drawing.Point(260, 20);
             this.voltageComboBox.Name = "voltageComboBox";
             this.voltageComboBox.Size = new System.Drawing.Size(121, 21);
             this.voltageComboBox.TabIndex = 2;
@@ -938,6 +939,21 @@
             // 
             this.mainwindowBindingSource1.DataSource = typeof(PINV.mainwindow);
             // 
+            // powerComboBox
+            // 
+            this.powerComboBox.FormattingEnabled = true;
+            this.powerComboBox.Items.AddRange(new object[] {
+            "Select Power (W)",
+            "0.25",
+            "0.5",
+            "1.0",
+            "1.25"});
+            this.powerComboBox.Location = new System.Drawing.Point(6, 44);
+            this.powerComboBox.Name = "powerComboBox";
+            this.powerComboBox.Size = new System.Drawing.Size(121, 21);
+            this.powerComboBox.TabIndex = 13;
+            this.powerComboBox.Text = "Select Power (W)";
+            // 
             // mainwindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1047,6 +1063,7 @@
         private System.Windows.Forms.Button calculateTotalQuantityButton;
         private System.Windows.Forms.Label totalQuantityLabel;
         private System.Windows.Forms.TextBox totalQuantityTextBox;
+        private System.Windows.Forms.ComboBox powerComboBox;
     }
 }
 

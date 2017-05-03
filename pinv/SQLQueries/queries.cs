@@ -20,7 +20,7 @@ namespace PINV.SQLQueries
             "WHERE CFlag=1 AND NAME='Resistor' AND Power=0.25";
 
         /// <summary>
-        /// What is everything I have stored in a bin, purchased before 2017, ordered by item number?
+        /// What is everything I have stored in a bin, purchased before 2017?
         /// </summary>
         public static readonly string q2 = "SELECT INo, Name, IType, Amount, Protocol, PDate\n" +
             "FROM ITEM\n" +

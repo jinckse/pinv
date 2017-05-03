@@ -84,41 +84,41 @@ namespace PINV
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            queryOption = comboBox1.Text.Substring(0, 2);
+            queryOption = comboBox1.Text.Substring(0, 3);
 
-            if (queryOption.Equals("Q1"))
+            if (queryOption.Equals("Q1:"))
             {
                 queryOption = SQLQueries.Queries.q1; 
             }
-            else if (queryOption.Equals("Q2"))
+            else if (queryOption.Equals("Q2:"))
             {
                 queryOption = SQLQueries.Queries.q2;
             }
-            else if (queryOption.Equals("Q3"))
+            else if (queryOption.Equals("Q3:"))
             {
                 queryOption = SQLQueries.Queries.q3;
             }
-            else if (queryOption.Equals("Q4"))
+            else if (queryOption.Equals("Q4:"))
             {
                 queryOption = SQLQueries.Queries.q4;
             }
-            else if (queryOption.Equals("Q5"))
+            else if (queryOption.Equals("Q5:"))
             {
                 queryOption = SQLQueries.Queries.q5;
             }
-            else if (queryOption.Equals("Q6"))
+            else if (queryOption.Equals("Q6:"))
             {
                 queryOption = SQLQueries.Queries.q6;
             }
-            else if (queryOption.Equals("Q7"))
+            else if (queryOption.Equals("Q7:"))
             {
                 queryOption = SQLQueries.Queries.q7;
             }
-            else if (queryOption.Equals("Q8"))
+            else if (queryOption.Equals("Q8:"))
             {
                 queryOption = SQLQueries.Queries.q8;
             }
-            else if (queryOption.Equals("Q9"))
+            else if (queryOption.Equals("Q9:"))
             {
                 queryOption = SQLQueries.Queries.q9;
             }
@@ -230,11 +230,11 @@ namespace PINV
             /// Sort results alphabetically by name
             if (ascendingRadioButton.Checked)
             {
-                qb.AggregateOpsStr = "group by INo having Amount > 0 order by Name asc";
+                qb.AggregateOpsStr = "group by INo having Amount > 0 order by INo asc";
             }
             else
             {
-                qb.AggregateOpsStr = "group by INo having Amount > 0 order by Name desc";
+                qb.AggregateOpsStr = "group by INo having Amount > 0 order by INo desc";
             }
 
             /// We always use these items when viewing items
@@ -435,6 +435,17 @@ namespace PINV
             /// Component radio button is selected
             if (componentRadioButton.Checked)
             {
+                if (!firstWhereEntry)
+                {
+                    qb.WhereStr += " and";
+                    qb.WhereStr += (" CFlag=1");
+                }
+                else
+                {
+                    qb.WhereStr += (" CFlag=1");
+                    firstWhereEntry = false;
+                }
+
                 if (!resistanceComboBox.Text.Contains("Select"))
                 {
                     if (!firstWhereEntry)
@@ -490,11 +501,35 @@ namespace PINV
                         firstWhereEntry = false;
                     }
                 }
+
+                if (!powerComboBox.Text.Contains("Select"))
+                {
+                    if (!firstWhereEntry)
+                    {
+                        qb.WhereStr += " and";
+                        qb.WhereStr += (" Power=" + (powerComboBox.Text));
+                    }
+                    else
+                    {
+                        qb.WhereStr += (" Power=" + (powerComboBox.Text));
+                        firstWhereEntry = false;
+                    }
+                }
             }
 
             /// Tool radio button is selected
             if (toolRadioButton.Checked)
             {
+                if (!firstWhereEntry)
+                {
+                    qb.WhereStr += " and";
+                    qb.WhereStr += (" TFlag=1");
+                }
+                else
+                {
+                    qb.WhereStr += (" TFlag=1");
+                    firstWhereEntry = false;
+                }
                 if (!cDateComboBox.Text.Contains("Select"))
                 {
                     /// Less than 1 month
@@ -577,6 +612,17 @@ namespace PINV
             /// Large Component radio button is selected
             if (lComponentRadioButton.Checked)
             {
+                if (!firstWhereEntry)
+                {
+                    qb.WhereStr += " and";
+                    qb.WhereStr += (" LCFlag=1");
+                }
+                else
+                {
+                    qb.WhereStr += (" LCFlag=1");
+                    firstWhereEntry = false;
+                }
+
                 if (!protocolComboBox.Text.Contains("Select"))
                 {
                     if (!firstWhereEntry)
@@ -620,28 +666,39 @@ namespace PINV
                 }
             }
 
-            /// If no selections were made in the main options use wildcard
-            /// Right now this is catching any insstance where specilized options
-            /// were made. This is messy and should be handled with a dialog message
-            if (nameComboBox_LI.Text.Contains("Select")
-                && typeComboBox_LI.Text.Contains("Select")
-                && supplierComboBox_LI.Text.Contains("Select")
-                && priceComboBox_LI.Text.Contains("Select")
-                && purchaseDateComboBox_LI.Text.Contains("Select")
-                && resistanceComboBox.Text.Contains("Select")
-                && capacitanceComboBox.Text.Contains("Select")
-                && voltageComboBox.Text.Contains("Select")
-                && amperageComboBox.Text.Contains("Select")
-                && cDateComboBox.Text.Contains("Select")
-                && statusComboBox.Text.Contains("Select"))
-            {
-                qb.WhereStr = "";
-            }
+            ///// If no selections were made in the main options use wildcard
+            ///// Right now this is catching any insstance where specilized options
+            ///// were made. This is messy and should be handled with a dialog message
+            //if (nameComboBox_LI.Text.Contains("Select")
+            //    && typeComboBox_LI.Text.Contains("Select")
+            //    && supplierComboBox_LI.Text.Contains("Select")
+            //    && priceComboBox_LI.Text.Contains("Select")
+            //    && purchaseDateComboBox_LI.Text.Contains("Select")
+            //    && resistanceComboBox.Text.Contains("Select")
+            //    && capacitanceComboBox.Text.Contains("Select")
+            //    && voltageComboBox.Text.Contains("Select")
+            //    && amperageComboBox.Text.Contains("Select")
+            //    && powerComboBox.Text.Contains("Select")
+            //    && cDateComboBox.Text.Contains("Select")
+            //    && statusComboBox.Text.Contains("Select"))
+            //{
+            //    qb.WhereStr = "";
+            //}
 
             qb.FromStr = "from ITEM";
             
             if (includePaymentInfoCheckBox.Checked)
             {
+                /// Sort results numerically by purchase date
+                if (ascendingRadioButton.Checked)
+                {
+                    qb.AggregateOpsStr = "group by INo having Amount > 0 order by PDate asc";
+                }
+                else
+                {
+                    qb.AggregateOpsStr = "group by INo having Amount > 0 order by PDate desc";
+                }
+
                 qb.JoinOpsStr = "join PURCHASE_INFO on (INum = INo)"; 
             }
             else
@@ -856,7 +913,7 @@ namespace PINV
             string oldAggStr = qb.AggregateOpsStr;
 
             /// Make necessary changes for valid response
-            qb.SelectStr = "select sum(Price)";
+            qb.SelectStr = "select sum(Price * Amount) as Total_Price";
             qb.AggregateOpsStr = "";
 
             var inv = Inventory.Instance();
