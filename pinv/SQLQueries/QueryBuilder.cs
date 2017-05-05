@@ -39,25 +39,7 @@ namespace pinv.SQLQueries
         #region methods
 
         /// <summary>
-        /// Locate an item in the inventory system based on user query
-        /// </summary>
-        /// <returns>query</returns>
-        public string BuildLocateItemQuery()
-        {
-            string query;
-
-            // Connect query parts
-            query = SelectStr + " "
-                + FromStr + " "
-                + JoinOpsStr + " "
-                + WhereStr + " "
-                + AggregateOpsStr;
-
-            // Return result
-            return query;
-        }
-
-        /// <summary>
+        /// TODO: At this point this is the only method used in this class, until overloaded methods are utilized
         /// View an item in the inventory system based on user query
         /// </summary>
         public string BuildViewItemQuery()
@@ -77,6 +59,26 @@ namespace pinv.SQLQueries
         }
 
         /// <summary>
+        /// Locate an item in the inventory system based on user query
+        /// </summary>
+        /// <returns>query</returns>
+        public string BuildLocateItemQuery()
+        {
+            string query;
+
+            // Connect query parts
+            query = SelectStr + " "
+                + FromStr + " "
+                + JoinOpsStr + " "
+                + WhereStr + " "
+                + AggregateOpsStr;
+
+            // Return result
+            return query;
+        }
+
+        /// <summary>
+        /// TODO: Not yet implemented
         /// Add an item in the inventory system based on user query
         /// </summary>
         public void BuildAddItemQuery()
@@ -85,6 +87,7 @@ namespace pinv.SQLQueries
         }
 
         /// <summary>
+        /// TODO: Not yet implemented
         /// Delete an item in the inventory system based on user query
         /// </summary>
         public void BuildDeleteItemQuery()
@@ -93,7 +96,6 @@ namespace pinv.SQLQueries
         }
 
         #endregion methods
-
     }
 }
 

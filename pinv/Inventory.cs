@@ -33,6 +33,8 @@ namespace PINV
         #region methods
 
         /// <summary>
+        /// TODO: This overloaded method should be phased out. 
+        /// Refer to the one below for general record retreivals
         /// Retrieve records from PINV system
         /// </summary>
         /// <returns></returns>
@@ -140,7 +142,9 @@ namespace PINV
                 return null;
             }
         }
+
         /// <summary>
+        /// TODO: Unused, and most likely no longer needed
         /// Returns a list of sample queries for use in combobox
         /// </summary>
         /// <returns></returns>

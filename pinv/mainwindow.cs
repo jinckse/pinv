@@ -60,8 +60,8 @@ namespace PINV
             var inv = Inventory.Instance();
             List<string> output = new List<string>();
 
+            /// Retrieve records for debug output in status log
             output = inv.RetrieveRecords(dbCon, queryOption, true);
-
             outputPane.AppendText("Result set for query: " + queryOption);
 
             try
