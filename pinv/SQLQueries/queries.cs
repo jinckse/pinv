@@ -47,7 +47,7 @@ namespace PINV.SQLQueries
             "ORDER BY PDate";
 
         /// <summary>
-        /// Where can I find a 3 foot USB type-C calbe?
+        /// Where can I find a 3 foot USB type-C cable?
         /// </summary>
         public static readonly string q4 = "SELECT SISNum AS Bin_No\n" +
             "FROM ITEM\n" +

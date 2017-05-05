@@ -737,12 +737,15 @@ namespace PINV
             }
 
             /// Send query to database
+            outputPane.AppendText("\nSending query to database...");
+
             var inv = Inventory.Instance();
             List<string> output = new List<string>();
             string query = qb.BuildViewItemQuery();
 
             try
             {
+                outputPane.AppendText("\nSQL Query: " + query);
                 output = inv.RetrieveRecords(dbCon, query);
 
                 /// Populate and show results form
@@ -806,7 +809,7 @@ namespace PINV
             }
             catch (NullReferenceException ex)
             {
-                outputPane.AppendText("\nERROR: A problem occurred reading the database");
+                outputPane.AppendText("\nERROR: A problem occurred interacting with the database");
                 outputPane.AppendText("\nAre you connected?");
             }
         }
