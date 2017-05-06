@@ -33,8 +33,7 @@ namespace PINV
         #region methods
 
         /// <summary>
-        /// TODO: This overloaded method should be phased out. 
-        /// Refer to the one below for general record retreivals
+        /// TODO: This overloaded method should be phased out. Refer to the one below for general record retreivals
         /// Retrieve records from PINV system
         /// </summary>
         /// <returns></returns>

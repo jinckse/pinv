@@ -62,7 +62,6 @@
     <Compile Include="ReportGenerator.cs" />
     <Compile Include="SQLQueries\Queries.cs" />
     <Compile Include="SQLQueries\QueryBuilder.cs" />
-    <Compile Include="TestClass.cs" />
     <Compile Include="ViewItemResults.cs">
       <SubType>Form</SubType>
     </Compile>
